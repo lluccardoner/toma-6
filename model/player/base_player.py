@@ -1,12 +1,14 @@
 import abc
 from abc import ABC
-from typing import List
+from random import Random
+from typing import List, Optional
 
 from model.card import Card
 
 
 class BasePlayer(ABC):
-    def __init__(self, name: str):
+    def __init__(self, name: str, seed: Optional[int] = None):
+        self.randomizer = Random(seed)
         self.name: str = name
         self.hand: List[Card] = []
         self.total_points: int = 0

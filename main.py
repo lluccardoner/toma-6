@@ -2,7 +2,7 @@ from controler import GameController
 
 
 def main():
-    controller = GameController(num_players=2, seed=42)
+    controller = GameController(num_players=10, seed=42)
     controller.play()
 
 

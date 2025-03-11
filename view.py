@@ -1,4 +1,4 @@
-from typing import List, OrderedDict as OrderedDictType
+from typing import List
 
 from model.board import Board
 from model.card import Card
@@ -28,5 +28,9 @@ class View:
             print(f"{player.name}: {player.total_points} points {[card.value for card in player.hand]}")
 
     @staticmethod
-    def display_chosen_cards(chosen_cards: OrderedDictType[str, Card]):
+    def display_chosen_cards(chosen_cards: dict[str, Card]):
         print("\n".join([f"{player_name} -> {card.value}" for player_name, card in chosen_cards.items()]))
+
+    def display_results(self):
+        for player in sorted(self.players, key=lambda p: p.total_points):
+            print(f"{player.name} -> total: {player.total_points}, rounds: {player.round_points}")

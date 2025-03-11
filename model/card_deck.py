@@ -8,8 +8,7 @@ DECK_CARDS = [Card(i) for i in range(1, 105)]
 
 class CardDeck:
     def __init__(self, seed: Optional[int] = None):
-        self.seed = seed
-        self.randomizer = Random(self.seed)
+        self.randomizer = Random(seed)
         self.cards = DECK_CARDS.copy()
         self.shuffle()
 
