@@ -1,3 +1,6 @@
+import os
+import uuid
+from random import Random
 from typing import Optional
 
 import matplotlib.pyplot as plt
@@ -7,14 +10,19 @@ import seaborn as sns
 from src.controller.controller import GameController
 from src.model.game_config import GameConfig
 
-from random import Random
-
 MAX_SEED = 1_000_000
+RESULTS_FOLDER = "results/"
+
 
 class Simulation:
     def __init__(self, game_config: GameConfig, num_games: int = 100, seed: Optional[int] = None):
         self.seed = seed
         self.randomizer = Random(seed)
+        self.simulation_id = str(uuid.uuid4())
+
+        self.output_path = os.path.join(RESULTS_FOLDER, self.simulation_id)
+        if not os.path.exists(self.output_path):
+            os.mkdir(self.output_path)
 
         self.game_config = game_config
         self.num_games = num_games
@@ -33,6 +41,9 @@ class Simulation:
             game_results = pd.DataFrame(
                 [
                     {
+                        "simulation_id": self.simulation_id,
+                        "simulation_seed": self.seed,
+                        "simulation_num_games": self.num_games,
                         "game_id": self.game_config.game_id,
                         "game_name": self.game_config.name,
                         "game_number": game_number,
@@ -52,39 +63,94 @@ class Simulation:
 
             self.results = pd.concat([self.results, game_results], ignore_index=True)
 
+        self.save_results()
         self.plot_results()
 
+    def save_results(self):
+        self.results.to_csv(os.path.join(self.output_path, "results.csv"), )
+
     def plot_results(self):
+        title = (
+                f"Simulation \nid={self.simulation_id} seed={self.seed}" +
+                f"\n Game \nid={self.game_config.game_id} num_games={self.num_games}"
+        )
+
+        self.plot_is_winner(title)
+        self.plot_swarm(title)
+        self.plot_violin(title)
+        self.plot_box(title)
+
+    def plot_is_winner(self, title):
+        plt.figure(figsize=(12, 6))
+        sns.catplot(
+            data=self.results,
+            x="player_name",
+            y="is_winner",
+            kind="bar"
+        )
+
+        plt.title(title)
+        plt.xlabel("Player Name")
+        plt.ylabel("Is winner")
+        plt.xticks(rotation=45)
+        plt.grid(True, linestyle="--", alpha=0.5)
+
+        plt.savefig(os.path.join(self.output_path, "is_winner.png"), dpi=300, bbox_inches="tight")
+
+    def plot_swarm(self, title):
+        plt.figure(figsize=(12, 6))
+        sns.catplot(
+            data=self.results,
+            x="player_name",
+            y="total_points",
+            hue="is_winner",
+            kind="swarm"
+        )
+
+        plt.title(title)
+        plt.xlabel("Player Name")
+        plt.ylabel("Total Points")
+        plt.xticks(rotation=45)
+        plt.grid(True, linestyle="--", alpha=0.5)
+
+        plt.savefig(os.path.join(self.output_path, "swarm.png"), dpi=300, bbox_inches="tight")
+
+    def plot_violin(self, title):
         plt.figure(figsize=(12, 6))
         sns.violinplot(
             data=self.results,
             x="player_name",
             y="total_points",
-            inner=None,  # Hide inner box plot
-            scale="width",
-            linewidth=1,
-            alpha=0.7
-        )
-
-        """
-        sns.scatterplot(
-            data=self.results,
-            x="player_name",
-            y="total_points",
             hue="is_winner",
-            palette={True: "red", False: "black"},
-            style="is_winner",
-            markers={True: "o", False: "X"},
-            s=60,  # Adjust marker size
-            edgecolor="black"
+            split="true",
+            inner="box",
+            density_norm="count",
+            linewidth=1,
+            alpha=0.7,
         )
-        """
 
-        plt.title("Total Points per Player Across Games")
+        plt.title(title)
         plt.xlabel("Player Name")
         plt.ylabel("Total Points")
         plt.xticks(rotation=45)
         plt.legend(title="Winner", labels=["Loser", "Winner"], loc="upper right")
         plt.grid(True, linestyle="--", alpha=0.5)
 
-        plt.show()
+        plt.savefig(os.path.join(self.output_path, "violin.png"), dpi=300, bbox_inches="tight")
+
+    def plot_box(self, title):
+        plt.figure(figsize=(12, 6))
+        sns.catplot(
+            kind="box",
+            data=self.results,
+            x="player_name",
+            y="total_points",
+        )
+
+        plt.title(title)
+        plt.xlabel("Player Name")
+        plt.ylabel("Total Points")
+        plt.xticks(rotation=45)
+        plt.grid(True, linestyle="--", alpha=0.5)
+
+        plt.savefig(os.path.join(self.output_path, "box.png"), dpi=300, bbox_inches="tight")
