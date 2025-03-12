@@ -4,6 +4,7 @@ from src.model.game_config import GameConfig
 
 
 def main():
+    # TODO get config as input argument
     args = parse_controller_args()
     game_config = GameConfig.get_test_config(num_players=args.num_players)
     controller = GameController(game_config, seed=args.seed)
