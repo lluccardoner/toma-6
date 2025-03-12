@@ -1,0 +1,15 @@
+{
+  "game_id": "1",
+  "name": "All random players",
+  "seed": 42,
+  "players": [
+    {
+      "name": "Random player 1",
+      "type": "random"
+    },
+    {
+      "name": "Random player 2",
+      "type": "random"
+    }
+  ]
+}

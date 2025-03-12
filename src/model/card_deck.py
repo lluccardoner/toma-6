@@ -1,7 +1,7 @@
 from random import Random
 from typing import Optional
 
-from model.card import Card
+from src.model.card import Card
 
 DECK_CARDS = [Card(i) for i in range(1, 105)]
 

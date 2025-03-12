@@ -1,6 +1,6 @@
 from typing import List
 
-from model.card import Card
+from src.model.card import Card
 
 BOARD_ROWS = 4
 

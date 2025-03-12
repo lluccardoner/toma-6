@@ -1,8 +1,8 @@
 from typing import Optional
 
-from model.board import BOARD_ROWS
-from model.card import Card
-from model.player.base_player import BasePlayer
+from src.model.board import BOARD_ROWS
+from src.model.card import Card
+from src.model.player.base_player import BasePlayer
 
 
 class RandomPlayer(BasePlayer):

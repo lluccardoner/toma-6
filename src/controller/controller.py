@@ -1,33 +1,36 @@
 from typing import Optional, Dict
 
-from model.board import Board
-from model.card import Card
-from model.card_deck import CardDeck
-from model.player.base_player import BasePlayer
-from model.player.random_player import RandomPlayer
-from view import View
+from src.model.board import Board
+from src.model.card import Card
+from src.model.card_deck import CardDeck
+from src.model.game_config import GameConfig
+from src.model.player.base_player import BasePlayer
+from src.model.player.player_factory import PlayerFactory
+from src.view import View
 
 CARDS_PER_PLAYER = 10
 ROUNDS_PER_GAME = 4
 MAX_ROW_LENGTH = 5
-
-CARD_DECK = [Card(i) for i in range(1, 105)]
+MAX_PLAYERS = 10
 
 
 class GameController:
-    def __init__(self, num_players: int, seed: Optional[int] = None):
+    def __init__(self, config: GameConfig, seed: Optional[int] = None):
         self.seed = seed
         # Model
-        self.deck = CardDeck(seed=seed)
+        self.deck = CardDeck(seed=self.seed)
         self.board = Board()
-        self.players = [RandomPlayer(name=f"Player {i + 1}", seed=seed) for i in range(num_players)]
+        self.players = [PlayerFactory.create_player(player_config, seed=self.seed) for player_config in config.players]
         self.players_dict = {player.name: player for player in self.players}
+        self.num_players = len(self.players)
+        assert self.num_players <= MAX_PLAYERS, f"Number of players should be maximum {MAX_PLAYERS}"
         # View
         self.view = View(self.board, self.players)
         # Init game
         self.deck.shuffle()
 
     def play(self) -> BasePlayer:
+        print(f"Starting game [{self.seed=}]")
         for player in self.players:
             player.reset_points()
 

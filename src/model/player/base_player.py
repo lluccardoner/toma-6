@@ -3,7 +3,7 @@ from abc import ABC
 from random import Random
 from typing import List, Optional
 
-from model.card import Card
+from src.model.card import Card
 
 
 class BasePlayer(ABC):

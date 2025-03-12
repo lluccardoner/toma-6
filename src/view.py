@@ -1,8 +1,8 @@
 from typing import List
 
-from model.board import Board
-from model.card import Card
-from model.player.base_player import BasePlayer
+from src.model.board import Board
+from src.model.card import Card
+from src.model.player.base_player import BasePlayer
 
 
 class View:
