@@ -18,9 +18,14 @@ Each game config has a unique id, a name and a set of players with each player t
 ## Game
 A game is run based on a game config.
 
-You can run a test game with random players:
+You can run a test game with 2 random players:
 ```bash
-python main_game.py --num-players 3 --seed 42
+python main_game.py --seed 42
+```
+
+You can run a game with a wanted config:
+```bash
+python main_game.py --config "2_random_10.json" --seed 42
 ```
 
 ## Simulation

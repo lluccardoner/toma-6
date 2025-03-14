@@ -1,0 +1,46 @@
+{
+  "game_id": "2",
+  "name": "All random players",
+  "players": [
+    {
+      "name": "Random player 1",
+      "type": "random"
+    },
+    {
+      "name": "Random player 2",
+      "type": "random"
+    },
+    {
+      "name": "Random player 3",
+      "type": "random"
+    },
+    {
+      "name": "Random player 4",
+      "type": "random"
+    },
+    {
+      "name": "Random player 5",
+      "type": "random"
+    },
+    {
+      "name": "Random player 6",
+      "type": "random"
+    },
+    {
+      "name": "Random player 7",
+      "type": "random"
+    },
+    {
+      "name": "Random player 8",
+      "type": "random"
+    },
+    {
+      "name": "Random player 9",
+      "type": "random"
+    },
+    {
+      "name": "Random player 10",
+      "type": "random"
+    }
+  ]
+}

@@ -2,13 +2,14 @@ import argparse
 
 
 def parse_controller_args():
-    parser = argparse.ArgumentParser(description="Run a Toma 6 game simulation.")
+    parser = argparse.ArgumentParser(description="Run a Toma 6 game.")
 
     parser.add_argument(
-        "--num-players",
-        type=int,
-        required=True,
-        help="Number of players in the game (e.g., 2-10)"
+        "--config",
+        type=str,
+        required=False,
+        default="1_random_2.json",
+        help="Config for the game. Defaults to '1_random_2.json'"
     )
 
     parser.add_argument(
