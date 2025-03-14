@@ -1,5 +1,6 @@
 import os
 import uuid
+from datetime import datetime
 from random import Random
 from typing import Optional
 
@@ -10,7 +11,6 @@ import seaborn as sns
 from src.controller.controller import GameController
 from src.model.game_config import GameConfig
 
-MAX_SEED = 1_000_000
 RESULTS_FOLDER = "results/"
 
 
@@ -19,6 +19,7 @@ class Simulation:
         self.seed = seed
         self.randomizer = Random(seed)
         self.simulation_id = str(uuid.uuid4())
+        self.date_time = datetime.now()
 
         self.output_path = os.path.join(RESULTS_FOLDER, self.simulation_id)
         if not os.path.exists(self.output_path):
@@ -26,15 +27,14 @@ class Simulation:
 
         self.game_config = game_config
         self.num_games = num_games
-        self.results = pd.DataFrame(columns=[
-            "game_id", "game_name", "game_number", "game_seed",
-            "player_name", "player_class", "total_points",
-            "round_1_points", "round_2_points", "round_3_points", "round_4_points"
-        ])
+        self.results = pd.DataFrame()
 
     def run(self):
-        seeds = [self.randomizer.randint(1, MAX_SEED) for _ in range(self.num_games)]
+        print(f"Running simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
+        seeds = [self.randomizer.randint(1, self.num_games * 100) for _ in range(self.num_games)]
         for game_number, game_seed in enumerate(seeds):
+            if game_number % 100:
+                print(f"Running simulation {game_number} of {self.num_games}")
             game = GameController(self.game_config, seed=game_seed)
             winner = game.play()
 
@@ -43,6 +43,7 @@ class Simulation:
                     {
                         "simulation_id": self.simulation_id,
                         "simulation_seed": self.seed,
+                        "simulation_date_time": self.date_time,
                         "simulation_num_games": self.num_games,
                         "game_id": self.game_config.game_id,
                         "game_name": self.game_config.name,
@@ -65,9 +66,10 @@ class Simulation:
 
         self.save_results()
         self.plot_results()
+        print(f"Finished simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
 
     def save_results(self):
-        self.results.to_csv(os.path.join(self.output_path, "results.csv"), )
+        self.results.to_csv(os.path.join(self.output_path, "results.csv"), index=False)
 
     def plot_results(self):
         title = (

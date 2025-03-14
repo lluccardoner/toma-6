@@ -8,8 +8,8 @@ def parse_controller_args():
         "--config",
         type=str,
         required=False,
-        default="1_random_2.json",
-        help="Config for the game. Defaults to '1_random_2.json'"
+        default="1-random_2.json",
+        help="Config for the game. Defaults to '1-random_2.json'"
     )
 
     parser.add_argument(

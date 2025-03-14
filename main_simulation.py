@@ -1,13 +1,15 @@
 from src.model.game_config import GameConfig
-from src.simulation import Simulation
+from src.simulation.simulation import Simulation
+from src.simulation.simulation_args import parse_simulation_args
 
 
 def main():
     # TODO in simulations, do not print the output of the controller, store it in file?
-    # TODO args: list of configs, num games and seed
-    game_config = GameConfig.get_test_config(num_players=3)
-    simulation = Simulation(game_config, num_games=100, seed=42)
-    simulation.run()
+    args = parse_simulation_args()
+    game_configs = [GameConfig.load(config) for config in args.configs]
+    for game_config in game_configs:
+        simulation = Simulation(game_config, num_games=args.num_games, seed=args.seed)
+        simulation.run()
 
 
 if __name__ == '__main__':
