@@ -4,7 +4,6 @@ from src.simulation.simulation_args import parse_simulation_args
 
 
 def main():
-    # TODO in simulations, do not print the output of the controller, store it in file?
     args = parse_simulation_args()
     game_configs = [GameConfig.load(config) for config in args.configs]
     for game_config in game_configs:

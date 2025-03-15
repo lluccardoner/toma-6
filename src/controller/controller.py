@@ -1,5 +1,6 @@
 from typing import Optional, Dict
 
+from src.logger import get_controller_logger
 from src.model.board import Board
 from src.model.card import Card
 from src.model.card_deck import CardDeck
@@ -15,7 +16,8 @@ MAX_PLAYERS = 10
 
 
 class GameController:
-    def __init__(self, config: GameConfig, seed: Optional[int] = None):
+    def __init__(self, config: GameConfig, seed: Optional[int] = None, logger_file: Optional[str] = None):
+        self.logger = get_controller_logger(logger_file)
         self.seed = seed
         # Model
         self.deck = CardDeck(seed=self.seed)
@@ -25,17 +27,17 @@ class GameController:
         self.num_players = len(self.players)
         assert self.num_players <= MAX_PLAYERS, f"Number of players should be maximum {MAX_PLAYERS}"
         # View
-        self.view = View(self.board, self.players)
+        self.view = View(self.board, self.players, logger_file=logger_file)
         # Init game
         self.deck.shuffle()
 
     def play(self) -> BasePlayer:
-        print(f"Starting game [{self.seed=}]")
+        self.logger.info(f"Starting game [seed={self.seed}]")
         for player in self.players:
             player.reset_points()
 
         for game_round in range(1, ROUNDS_PER_GAME + 1):
-            print(f"Starting round {game_round}")
+            self.logger.info(f"Starting round {game_round}")
 
             self.deck.reset()
             self.board.reset()
@@ -44,7 +46,7 @@ class GameController:
             self.view.display_game()
 
             for turn in range(1, CARDS_PER_PLAYER + 1):
-                print(f"Playing round:{game_round}|turn:{turn}")
+                self.logger.info(f"Playing round:{game_round}|turn:{turn}")
 
                 chosen_cards = self.choose_cards()
                 self.view.display_chosen_cards(chosen_cards)
@@ -60,7 +62,7 @@ class GameController:
         return winner
 
     def deal_cards(self):
-        print(f"Dealing {CARDS_PER_PLAYER} cards to each player...")
+        self.logger.info(f"Dealing {CARDS_PER_PLAYER} cards to each player...")
         for player in self.players:
             player.reset_hand()
             for _ in range(CARDS_PER_PLAYER):
@@ -68,20 +70,20 @@ class GameController:
             player.hand.sort(key=lambda card: card.value)
 
     def initialize_board(self):
-        print("Initializing board...")
+        self.logger.info("Initializing board...")
         for row in self.board.rows:
             card = self.deck.cards.pop()
             row.append(card)
 
     def choose_cards(self) -> Dict[str, Card]:
-        print("Players choose cards...")
+        self.logger.info("Players choose cards...")
         chosen_cards = [(player.name, player.choose_card()) for player in self.players]
         # Lowest card will play first
         chosen_cards.sort(key=lambda x: x[1].value)
         return dict(chosen_cards)
 
     def play_cards(self, chosen_cards: dict[str, Card]):
-        print("Playing cards...")
+        self.logger.info("Playing cards...")
         for player_name, chosen_card in chosen_cards.items():
             player = self.players_dict[player_name]
             row_index = self.find_valid_row(chosen_card)
@@ -100,7 +102,7 @@ class GameController:
                 play_str += f"Can't play the card -> Chose row {chosen_row + 1}"
                 self.nyam_nyam_nyam(chosen_row, chosen_card, player)
 
-            print(play_str)
+            self.logger.info(play_str)
 
     def find_valid_row(self, card: Card) -> Optional[int]:
         valid_rows = {

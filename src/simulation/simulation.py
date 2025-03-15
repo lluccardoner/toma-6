@@ -9,6 +9,7 @@ import pandas as pd
 import seaborn as sns
 
 from src.controller.controller import GameController
+from src.logger import get_simulation_logger
 from src.model.game_config import GameConfig
 
 RESULTS_FOLDER = "results/"
@@ -16,6 +17,7 @@ RESULTS_FOLDER = "results/"
 
 class Simulation:
     def __init__(self, game_config: GameConfig, num_games: int = 100, seed: Optional[int] = None):
+        self.logger = get_simulation_logger()
         self.seed = seed
         self.randomizer = Random(seed)
         self.simulation_id = str(uuid.uuid4())
@@ -30,12 +32,13 @@ class Simulation:
         self.results = pd.DataFrame()
 
     def run(self):
-        print(f"Running simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
+        self.logger.info(f"Running simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
+        logger_file = os.path.join(self.output_path, "game.log")
         seeds = [self.randomizer.randint(1, self.num_games * 100) for _ in range(self.num_games)]
         for game_number, game_seed in enumerate(seeds):
             if game_number % 100:
-                print(f"Running simulation {game_number} of {self.num_games}")
-            game = GameController(self.game_config, seed=game_seed)
+                self.logger.info(f"Running simulation {game_number} of {self.num_games}")
+            game = GameController(self.game_config, seed=game_seed, logger_file=logger_file)
             winner = game.play()
 
             game_results = pd.DataFrame(
@@ -66,7 +69,7 @@ class Simulation:
 
         self.save_results()
         self.plot_results()
-        print(f"Finished simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
+        self.logger.info(f"Finished simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
 
     def save_results(self):
         self.results.to_csv(os.path.join(self.output_path, "results.csv"), index=False)

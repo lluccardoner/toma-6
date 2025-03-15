@@ -4,7 +4,11 @@ from dataclasses import dataclass
 from enum import StrEnum, auto
 from typing import List, Dict
 
+from src.logger import get_default_logger
+
 CONFIG_PATH = "config"
+
+config_logger = get_default_logger("GameConfig")
 
 
 class PlayerType(StrEnum):
@@ -43,7 +47,7 @@ class GameConfig:
         with open(config_file_path, "r") as f:
             config_data = json.load(f)
             game_config = GameConfig.from_dict(config_data)
-            print(f"Loaded config id={game_config.game_id} from {config_file_path}")
+            config_logger.info(f"Loaded config id={game_config.game_id} from {config_file_path}")
             return game_config
 
     @staticmethod
