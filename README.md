@@ -1,5 +1,14 @@
 # Toma 6 simulations
 
+## Table of Contents
+
+- [What is Toma 6?](#what-is-toma-6)
+- [Game config](#game-config)
+- [Game](#game)
+- [Simulation](#simulation)
+- [Players](#players)
+    - [Random player](#random-player)
+
 ## What is Toma 6?
 
 [Toma 6](https://en.wikipedia.org/wiki/6_nimmt!) is a card game for 2–10 players.
@@ -15,12 +24,14 @@ Note: current implementation is 4 rounds instead of reaching 66 points.
 ## Game config
 
 Under the `config` folder, different game configs can be defined.
-Each game config ha:
+Each game config has:
+
 - A unique id
 - A descriptive name
 - A set of players with each player type and name
 
-The config naming convention is: `{id}-{player_type_1}_{player_type_1_num_players}-...-{player_type_N}_{player_type_N_num_players}`
+The config naming convention
+is: `{id}-{player_type_1}_{player_type_1_num_players}-...-{player_type_N}_{player_type_N_num_players}`
 
 ## Game
 
@@ -60,3 +71,19 @@ python main_simulation.py --seed 42 --num-games 10 --config "1-random_2.json" "2
 Here comes the fun part. The idea is to code different types of players and see which one wins more games.
 The most basic player has a random strategy when playing a card or when choosing to take a row.
 See implementations on `src/model/player`.
+
+The `BasePlayer` class is the parent class of all players.
+The two decisions of a player during the game are:
+
+- Choose a card to play each turn
+- Chose a row to take if you played the 6th card or if you played a low card that can not be placed
+
+### Random player
+
+`type="random"`
+
+The random player is the most basic player that always make random decisions when playing a card or choosing a row to
+take.
+
+- Choose a card: chooses a random card from the hand
+- Choose a row to take: chooses a random row to take
