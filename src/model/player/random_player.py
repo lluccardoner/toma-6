@@ -1,16 +1,14 @@
 from typing import Optional
 
-from src.model.board import BOARD_ROWS
-from src.model.card import Card
 from src.model.player.base_player import BasePlayer
+from src.model.strategy.choose_card.random_choose_card_strategy import RandomChooseCardStrategy
+from src.model.strategy.choose_row.random_choose_row_strategy import RandomChooseRowStrategy
 
 
 class RandomPlayer(BasePlayer):
     def __init__(self, name: str, seed: Optional[int] = None):
-        super().__init__(name, seed)
-
-    def choose_card(self) -> Card:
-        return self.hand.pop(self.randomizer.randint(0, len(self.hand) - 1))
-
-    def choose_row(self) -> int:
-        return self.randomizer.randint(0, BOARD_ROWS - 1)
+        super().__init__(
+            name=name,
+            choose_card_strategy=RandomChooseCardStrategy(seed),
+            choose_row_strategy=RandomChooseRowStrategy(seed)
+        )

@@ -1,0 +1,14 @@
+{
+  "game_id": "4",
+  "name": "A player that always plays lowest card against a random player",
+  "players": [
+    {
+      "name": "Random player 1",
+      "type": "random"
+    },
+    {
+      "name": "Min player 1",
+      "type": "min"
+    }
+  ]
+}

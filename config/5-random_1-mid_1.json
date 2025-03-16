@@ -1,0 +1,14 @@
+{
+  "game_id": "5",
+  "name": "A player that always plays mid range card against a random player",
+  "players": [
+    {
+      "name": "Random player 1",
+      "type": "random"
+    },
+    {
+      "name": "Mid player 1",
+      "type": "mid"
+    }
+  ]
+}

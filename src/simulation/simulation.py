@@ -36,7 +36,7 @@ class Simulation:
         logger_file = os.path.join(self.output_path, "game.log")
         seeds = [self.randomizer.randint(1, self.num_games * 100) for _ in range(self.num_games)]
         for game_number, game_seed in enumerate(seeds):
-            if game_number % 100:
+            if game_number % 100 == 0:
                 self.logger.info(f"Running simulation {game_number} of {self.num_games}")
             game = GameController(self.game_config, seed=game_seed, logger_file=logger_file)
             winner = game.play()

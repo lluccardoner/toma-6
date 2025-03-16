@@ -1,0 +1,14 @@
+{
+  "game_id": "3",
+  "name": "A player that always plays highest card against a random player",
+  "players": [
+    {
+      "name": "Random player 1",
+      "type": "random"
+    },
+    {
+      "name": "Max player 1",
+      "type": "max"
+    }
+  ]
+}

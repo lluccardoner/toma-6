@@ -13,6 +13,9 @@ config_logger = get_default_logger("GameConfig")
 
 class PlayerType(StrEnum):
     RANDOM = auto()
+    MIN = auto()
+    MID = auto()
+    MAX = auto()
 
 
 @dataclass
