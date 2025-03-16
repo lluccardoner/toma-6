@@ -1,5 +1,6 @@
-from typing import List
+from typing import List, Optional
 
+from src.model.board import Board
 from src.model.card import Card
 from src.model.strategy.choose_card.base_choose_card_strategy import BaseChooseCardStrategy
 
@@ -11,7 +12,7 @@ class LevelChooseCardStrategy(BaseChooseCardStrategy):
         assert 0 <= level <= 1, "Level must be between 0 <= level <= 1"
         self.level = level
 
-    def choose_card(self, hand: List[Card]) -> Card:
+    def choose_card(self, hand: List[Card], board: Optional[Board] = None) -> Card:
         # Hand is always sorted from low to high
         choose_card = int((len(hand) - 1) * self.level)
         return hand.pop(choose_card)

@@ -1,0 +1,14 @@
+{
+  "game_id": "0",
+  "name": "You against random player",
+  "players": [
+    {
+      "name": "Random",
+      "type": "random"
+    },
+    {
+      "name": "Input",
+      "type": "input"
+    }
+  ]
+}
