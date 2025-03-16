@@ -11,3 +11,6 @@ class Board:
 
     def reset(self):
         self.rows: List[List[Card]] = [[] for _ in range(BOARD_ROWS)]
+
+    def get_points_per_row(self) -> List[int]:
+        return [sum(card.points) for row in self.rows for card in row]

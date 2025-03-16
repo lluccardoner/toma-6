@@ -77,7 +77,7 @@ class GameController:
 
     def choose_cards(self) -> Dict[str, Card]:
         self.logger.info("Players choose cards...")
-        chosen_cards = [(player.name, player.choose_card()) for player in self.players]
+        chosen_cards = [(player.name, player.choose_card(board=self.board)) for player in self.players]
         # Lowest card will play first
         chosen_cards.sort(key=lambda x: x[1].value)
         return dict(chosen_cards)
@@ -98,7 +98,7 @@ class GameController:
                     self.nyam_nyam_nyam(row_index, chosen_card, player)
 
             else:
-                chosen_row = player.choose_row()
+                chosen_row = player.choose_row(board=self.board)
                 play_str += f"Can't play the card -> Chose row {chosen_row + 1}"
                 self.nyam_nyam_nyam(chosen_row, chosen_card, player)
 
