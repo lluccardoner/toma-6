@@ -1,5 +1,8 @@
-from logging import Formatter, getLogger, Logger, StreamHandler, INFO, FileHandler
+from logging import Formatter, getLogger, Logger, StreamHandler, INFO, FileHandler, Handler
+from logging.handlers import MemoryHandler
 from typing import Optional
+
+MEMORY_LOG_BUFFER_CAPACITY = 1_000_000
 
 LOGGING_CONFIG_FILE = "src/logger/logging_config.json"
 
@@ -19,7 +22,7 @@ def get_simulation_logger() -> Logger:
 
 def get_controller_logger(log_file: Optional[str] = None) -> Logger:
     formatter = detailed_formatter
-    handler = get_file_handler(formatter, log_file) if log_file else get_console_handler(formatter)
+    handler = get_memory_file_handler(formatter, log_file) if log_file else get_console_handler(formatter)
     logger = getLogger("Controller")
     logger.addHandler(handler)
     logger.setLevel(INFO)
@@ -29,7 +32,7 @@ def get_controller_logger(log_file: Optional[str] = None) -> Logger:
 
 def get_view_logger(log_file: Optional[str] = None) -> Logger:
     formatter = plain_formatter
-    handler = get_file_handler(formatter, log_file) if log_file else get_console_handler(formatter)
+    handler = get_memory_file_handler(formatter, log_file) if log_file else get_console_handler(formatter)
     logger = getLogger("View")
     logger.addHandler(handler)
     logger.setLevel(INFO)
@@ -53,7 +56,18 @@ def get_console_handler(formatter: Formatter) -> StreamHandler:
     return console_handler
 
 
+def get_memory_file_handler(formatter: Formatter, file_name: str, ) -> MemoryHandler:
+    file_handler = get_file_handler(formatter, file_name)
+    return get_memory_handler(target=file_handler, formatter=formatter)
+
+
 def get_file_handler(formatter: Formatter, file_name: str) -> FileHandler:
     file_handler = FileHandler(file_name)
     file_handler.setFormatter(formatter)
     return file_handler
+
+
+def get_memory_handler(target: Handler, formatter: Formatter) -> MemoryHandler:
+    memory_handler = MemoryHandler(capacity=MEMORY_LOG_BUFFER_CAPACITY, target=target)
+    memory_handler.setFormatter(formatter)
+    return memory_handler

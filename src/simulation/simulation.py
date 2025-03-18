@@ -81,7 +81,8 @@ class Simulation:
         )
 
         self.plot_is_winner(title)
-        self.plot_swarm(title)
+        if self.num_games <= 100:
+            self.plot_swarm(title)
         self.plot_violin(title)
         self.plot_box(title)
 
