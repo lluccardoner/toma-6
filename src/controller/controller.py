@@ -1,6 +1,6 @@
 from typing import Optional, Dict
 
-from src.logger import get_controller_logger
+from src.logger import LoggingMode, get_controller_logger_by_mode
 from src.model.board import Board
 from src.model.card import Card
 from src.model.card_deck import CardDeck
@@ -16,8 +16,10 @@ MAX_PLAYERS = 10
 
 
 class GameController:
-    def __init__(self, config: GameConfig, seed: Optional[int] = None, logger_file: Optional[str] = None):
-        self.logger = get_controller_logger(logger_file)
+    def __init__(self, config: GameConfig, seed: Optional[int] = None,
+                 logging_mode: Optional[LoggingMode] = LoggingMode.TO_CONSOLE_VERBOSE,
+                 logger_file: Optional[str] = None):
+        self.logger = get_controller_logger_by_mode(logging_mode, logger_file)
         self.seed = seed
         # Model
         self.deck = CardDeck(seed=self.seed)
@@ -27,7 +29,7 @@ class GameController:
         self.num_players = len(self.players)
         assert self.num_players <= MAX_PLAYERS, f"Number of players should be maximum {MAX_PLAYERS}"
         # View
-        self.view = View(self.board, self.players, logger_file=logger_file)
+        self.view = View(self.board, self.players, logging_mode=logging_mode, logger_file=logger_file)
         # Init game
         self.deck.shuffle()
 

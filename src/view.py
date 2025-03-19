@@ -1,14 +1,16 @@
 from typing import List, Optional
 
-from src.logger import get_view_logger
+from src.logger import LoggingMode, get_view_logger_by_mode
 from src.model.board import Board
 from src.model.card import Card
 from src.model.player.base_player import BasePlayer
 
 
 class View:
-    def __init__(self, board: Board, players: List[BasePlayer], logger_file: Optional[str] = None):
-        self.logger = get_view_logger(logger_file)
+    def __init__(self, board: Board, players: List[BasePlayer],
+                 logging_mode: Optional[LoggingMode] = LoggingMode.TO_CONSOLE_VERBOSE,
+                 logger_file: Optional[str] = None):
+        self.logger = get_view_logger_by_mode(logging_mode, logger_file)
         self.board: Board = board
         self.players: List[BasePlayer] = players
 

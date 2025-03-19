@@ -90,7 +90,6 @@ take.
 
 # TODO
 - Add in README how to create player and strategy
-- Find what is slowing down code
 - Create hand class (str, rpr and draw card from value)
 - Create board row class
 - Add player types in README

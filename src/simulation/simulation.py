@@ -9,8 +9,10 @@ import pandas as pd
 import seaborn as sns
 
 from src.controller.controller import GameController
-from src.logger import get_simulation_logger
+from src.logger import get_simulation_logger, LoggingMode
 from src.model.game_config import GameConfig
+
+LOG_GAME_SAMPLER = 100
 
 RESULTS_FOLDER = "results/"
 
@@ -33,12 +35,14 @@ class Simulation:
 
     def run(self):
         self.logger.info(f"Running simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
-        logger_file = os.path.join(self.output_path, "game.log")
+        logger_file = os.path.join(self.output_path, "game-sample.log")
         seeds = [self.randomizer.randint(1, self.num_games * 100) for _ in range(self.num_games)]
         for game_number, game_seed in enumerate(seeds):
-            if game_number % 100 == 0:
+            logging_mode = LoggingMode.TO_FILE_SILENT
+            if game_number == 0 or game_number % LOG_GAME_SAMPLER == 0:
                 self.logger.info(f"Running simulation {game_number} of {self.num_games}")
-            game = GameController(self.game_config, seed=game_seed, logger_file=logger_file)
+                logging_mode = LoggingMode.TO_FILE_VERBOSE  # Only log a sample of games
+            game = GameController(self.game_config, seed=game_seed, logging_mode=logging_mode, logger_file=logger_file)
             winner = game.play()
 
             game_results = pd.DataFrame(
