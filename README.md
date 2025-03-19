@@ -87,3 +87,13 @@ take.
 
 - Choose a card: chooses a random card from the hand
 - Choose a row to take: chooses a random row to take
+
+# TODO
+- Add in README how to create player and strategy
+- Find what is slowing down code
+- Create hand class (str, rpr and draw card from value)
+- Create board row class
+- Add player types in README
+- Add results
+- Add game configs with new choose row strategy
+- Add strategies in simulation results
