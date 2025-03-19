@@ -112,6 +112,5 @@ or `BaseChooseRowStrategy` and implement the abstract methods.
 # TODO
 
 - Player config creation with strategy instead of player type
-- Create board row class
 - Add example simulation results
 - Add tests
