@@ -1,16 +1,14 @@
-from typing import Optional
-
 from src.model.player.base_player import BasePlayer
 from src.model.strategy.choose_card.level_choose_card_strategy import LevelChooseCardStrategy
-from src.model.strategy.choose_row.random_choose_row_strategy import RandomChooseRowStrategy
+from src.model.strategy.choose_row.min_points_choose_row_strategy import MinPointsChooseRowStrategy
 
 
 class LevelPlayer(BasePlayer):
-    def __init__(self, name: str, level: float, seed: Optional[int] = None):
+    def __init__(self, name: str, level: float):
         super().__init__(
             name=name,
             choose_card_strategy=LevelChooseCardStrategy(level),
-            choose_row_strategy=RandomChooseRowStrategy(seed)
+            choose_row_strategy=MinPointsChooseRowStrategy()
         )
 
 
