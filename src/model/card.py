@@ -3,6 +3,12 @@ class Card:
         self.value = value
         self.points = self.calculate_points()
 
+    def __str__(self):
+        return f'{self.value}'
+
+    def __repr__(self):
+        return f'Card({self.value})'
+
     def calculate_points(self):
         if self.value % 5 == 0 and self.value % 11 == 0:
             return 7

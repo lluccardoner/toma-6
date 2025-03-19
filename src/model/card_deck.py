@@ -12,9 +12,12 @@ class CardDeck:
         self.cards = DECK_CARDS.copy()
         self.shuffle()
 
+    def reset_and_shuffle(self):
+        self.reset()
+        self.shuffle()
+
     def reset(self):
         self.cards = DECK_CARDS.copy()
-        self.shuffle()
 
     def shuffle(self):
         self.randomizer.shuffle(self.cards)

@@ -29,7 +29,7 @@ class View:
 
     def display_players(self):
         for player in self.players:
-            self.logger.info(f"{player.name}: {player.total_points} points {[card.value for card in player.hand]}")
+            self.logger.info(f"{player.name}: {player.total_points} points {player.hand}")
 
     def display_chosen_cards(self, chosen_cards: dict[str, Card]):
         self.logger.info("\n".join([f"{player_name} -> {card.value}" for player_name, card in chosen_cards.items()]))

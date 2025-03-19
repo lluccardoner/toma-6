@@ -41,7 +41,7 @@ class GameController:
         for game_round in range(1, ROUNDS_PER_GAME + 1):
             self.logger.info(f"Starting round {game_round}")
 
-            self.deck.reset()
+            self.deck.reset_and_shuffle()
             self.board.reset()
             self.deal_cards()
             self.initialize_board()
@@ -68,8 +68,9 @@ class GameController:
         for player in self.players:
             player.reset_hand()
             for _ in range(CARDS_PER_PLAYER):
-                player.hand.append(self.deck.cards.pop())
-            player.hand.sort(key=lambda card: card.value)
+                card = self.deck.cards.pop()
+                player.hand.add_card(card)
+            player.sort_hand()
 
     def initialize_board(self):
         self.logger.info("Initializing board...")
