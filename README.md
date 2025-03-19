@@ -111,10 +111,7 @@ or `BaseChooseRowStrategy` and implement the abstract methods.
 
 # TODO
 
-- Add in README how to create player and strategy
+- Player config creation with strategy instead of player type
 - Create hand class (str, rpr and draw card from value)
 - Create board row class
-- Add player types in README
-- Add results
-- Add game configs with new choose row strategy
-- Add strategies in simulation results
+- Add example simulation results

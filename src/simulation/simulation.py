@@ -58,6 +58,8 @@ class Simulation:
                         "game_seed": game_seed,
                         "player_name": player.name,
                         "player_class": player.__class__.__name__,
+                        "player_choose_card_strategy": player.choose_card_strategy.__name__,
+                        "player_choose_row_strategy": player.choose_row_strategy.__name__,
                         "is_winner": player.name == winner.name,
                         "total_points": player.total_points,
                         "round_1_points": player.round_points[0],
