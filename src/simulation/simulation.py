@@ -27,7 +27,7 @@ class Simulation:
 
         self.output_path = os.path.join(RESULTS_FOLDER, self.simulation_id)
         if not os.path.exists(self.output_path):
-            os.mkdir(self.output_path)
+            os.makedirs(self.output_path)
 
         self.game_config = game_config
         self.num_games = num_games
