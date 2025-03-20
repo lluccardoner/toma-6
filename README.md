@@ -111,6 +111,6 @@ or `BaseChooseRowStrategy` and implement the abstract methods.
 
 # TODO
 
-- Player config creation with strategy instead of player type
+- Add tests (github actions and test pass check in README)
+- Player config creation with strategy instead of player type?
 - Add example simulation results
-- Add tests

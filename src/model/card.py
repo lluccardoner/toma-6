@@ -9,6 +9,15 @@ class Card:
     def __repr__(self):
         return f'Card({self.value})'
 
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __lt__(self, other):
+        return self.value < other.value
+
+    def __gt__(self, other):
+        return self.value > other.value
+
     def calculate_points(self):
         if self.value % 5 == 0 and self.value % 11 == 0:
             return 7
