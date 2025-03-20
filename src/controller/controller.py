@@ -89,7 +89,7 @@ class GameController:
         self.logger.info("Playing cards...")
         for player_name, chosen_card in chosen_cards.items():
             player = self.players_dict[player_name]
-            row_index = self.find_valid_row(chosen_card)
+            row_index = self.board.find_valid_row(chosen_card)
 
             play_str = f"{player_name} -> "
             if row_index is not None:
@@ -106,14 +106,6 @@ class GameController:
                 self.nyam_nyam_nyam(chosen_row, chosen_card, player)
 
             self.logger.info(play_str)
-
-    def find_valid_row(self, card: Card) -> Optional[int]:
-        valid_rows = {
-            idx: card.value - row[-1].value
-            for idx, row in enumerate(self.board.rows)
-            if card.value > row[-1].value
-        }
-        return min(valid_rows, key=valid_rows.get) if valid_rows else None
 
     def nyam_nyam_nyam(self, row_index: int, played_card: Card, player: BasePlayer):
         # Take row
