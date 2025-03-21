@@ -7,6 +7,7 @@ from src.model.card_deck import CardDeck
 from src.model.game_config import GameConfig
 from src.model.player.base_player import BasePlayer
 from src.model.player.player_factory import PlayerFactory
+from src.model.typing import ChosenCardsHistoryType
 from src.view import View
 
 CARDS_PER_PLAYER = 10
@@ -32,6 +33,13 @@ class GameController:
         self.view = View(self.board, self.players, logging_mode=logging_mode, logger_file=logger_file)
         # Init game
         self.deck.shuffle()
+        self.chosen_cards_history: ChosenCardsHistoryType = {
+            round_num: {
+                turn_num: {}
+                for turn_num in range(1, CARDS_PER_PLAYER + 1)
+            }
+            for round_num in range(1, ROUNDS_PER_GAME + 1)
+        }
 
     def play(self) -> BasePlayer:
         self.logger.info(f"Starting game [seed={self.seed}]")
@@ -50,7 +58,7 @@ class GameController:
             for turn in range(1, CARDS_PER_PLAYER + 1):
                 self.logger.info(f"Playing round:{game_round}|turn:{turn}")
 
-                chosen_cards = self.choose_cards()
+                chosen_cards = self.choose_cards(game_round, turn)
                 self.view.display_chosen_cards(chosen_cards)
                 self.play_cards(chosen_cards)
                 self.view.display_game()
@@ -78,12 +86,22 @@ class GameController:
             card = self.deck.cards.pop()
             row.append(card)
 
-    def choose_cards(self) -> Dict[str, Card]:
+    def choose_cards(self, game_round: int, round_turn: int) -> Dict[str, Card]:
         self.logger.info("Players choose cards...")
-        chosen_cards = [(player.name, player.choose_card(board=self.board)) for player in self.players]
+        chosen_cards = [
+            (player.name, player.choose_card(
+                board=self.board,
+                current_round=game_round,
+                current_turn=round_turn,
+                chosen_cards_history=self.chosen_cards_history
+            ))
+            for player in self.players
+        ]
         # Lowest card will play first
         chosen_cards.sort(key=lambda x: x[1].value)
-        return dict(chosen_cards)
+        chosen_cards = dict(chosen_cards)
+        self.chosen_cards_history[game_round][round_turn] = chosen_cards
+        return chosen_cards
 
     def play_cards(self, chosen_cards: dict[str, Card]):
         self.logger.info("Playing cards...")
@@ -97,18 +115,23 @@ class GameController:
                 row = self.board.rows[row_index]
                 if len(row) < MAX_ROW_LENGTH:
                     row.append(chosen_card)
+                    points_received = 0
                 else:
-                    self.nyam_nyam_nyam(row_index, chosen_card, player)
+                    play_str += " -> Row is full"
+                    points_received = self.nyam_nyam_nyam(row_index, chosen_card, player)
 
             else:
                 chosen_row = player.choose_row(board=self.board)
                 play_str += f"Can't play the card -> Chose row {chosen_row + 1}"
-                self.nyam_nyam_nyam(chosen_row, chosen_card, player)
+                points_received = self.nyam_nyam_nyam(chosen_row, chosen_card, player)
 
             self.logger.info(play_str)
+            player.update_strategy(float(points_received))
 
-    def nyam_nyam_nyam(self, row_index: int, played_card: Card, player: BasePlayer):
-        # Take row
+    def nyam_nyam_nyam(self, row_index: int, played_card: Card, player: BasePlayer) -> int:
+        # Take row and add the points to the player
         row = self.board.rows[row_index]
-        player.total_points += sum(card.points for card in row)
+        points_received = sum(card.points for card in row)
+        player.add_points(points_received)
         self.board.rows[row_index] = [played_card]
+        return points_received

@@ -1,5 +1,6 @@
 from typing import Optional
 
+from src.model.typing import ChosenCardsHistoryType
 from src.model.board import Board
 from src.model.card import Card
 from src.model.hand import Hand
@@ -13,7 +14,14 @@ class LevelChooseCardStrategy(BaseChooseCardStrategy):
         assert 0 <= level <= 1, "Level must be between 0 <= level <= 1"
         self.level = level
 
-    def choose_card(self, hand: Hand, board: Optional[Board] = None) -> Card:
+    def choose_card(
+            self,
+            hand: Hand,
+            board: Optional[Board] = None,
+            current_round: Optional[int] = None,
+            current_turn: Optional[int] = None,
+            chosen_cards_history: Optional[ChosenCardsHistoryType] = None
+    ) -> Card:
         # Hand is always sorted from low to high
         card_index = int((len(hand) - 1) * self.level)
         return hand.pop_card_by_index(card_index)

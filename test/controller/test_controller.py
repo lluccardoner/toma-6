@@ -1,10 +1,11 @@
 import unittest
 from unittest.mock import MagicMock
 
-from model.card import Card
 from src.controller.controller import GameController
 from src.logger import LoggingMode
+from src.model.card import Card
 from src.model.game_config import GameConfig, PlayerConfig, PlayerType
+from src.model.player.base_player import BasePlayer
 
 
 class TestGameController(unittest.TestCase):
@@ -48,7 +49,7 @@ class TestGameController(unittest.TestCase):
         controller.players[1].choose_card = MagicMock(return_value=Card(5))
 
         # Act
-        chosen_cards = controller.choose_cards()
+        chosen_cards = controller.choose_cards(game_round=1, round_turn=1)
 
         # Assert
         self.assertEqual(len(chosen_cards), 2)
@@ -58,7 +59,10 @@ class TestGameController(unittest.TestCase):
     def test_play_cards(self):
         # Arrange
         controller = GameController(config=self.config, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
-        controller.board.find_valid_row = MagicMock(return_value=0)
+        player_1 = MagicMock(name="MockTestPlayer1", spec=BasePlayer)
+        player_2 = MagicMock(name="MockTestPlayer2", spec=BasePlayer)
+        controller.players_dict = {'TestPlayer1': player_1, 'TestPlayer2': player_2}
+        controller.board.find_valid_row = MagicMock(return_value=0)  # All players will play in row 0
         controller.board.rows[0] = [Card(1), Card(2), Card(3), Card(4), Card(5)]
         chosen_cards = {'TestPlayer1': Card(6), 'TestPlayer2': Card(7)}
 
@@ -67,8 +71,15 @@ class TestGameController(unittest.TestCase):
 
         # Assert
         self.assertEqual(len(controller.board.rows[0]), 2)  # Row got to 6 cards so it restarted
-        self.assertEqual(controller.board.rows[0], [Card(6), Card(7)])
-        self.assertEqual(controller.players[0].total_points, 6)  # Player 1 got all row points
+        self.assertEqual(controller.board.rows[0], [Card(6), Card(7)])  # Board status after playing cards
+
+        player_1.choose_row.assert_not_called()
+        player_1.add_points.assert_called_with(6)  # Player 1 got all row points
+        player_1.update_strategy.assert_called_once()
+
+        player_2.choose_row.assert_not_called()
+        player_2.add_points.assert_not_called()
+        player_2.update_strategy.assert_called_once()
 
     def test_nyam_nyam_nyam(self):
         # Arrange

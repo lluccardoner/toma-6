@@ -1,11 +1,12 @@
 import unittest
 from unittest.mock import MagicMock
-from src.model.player.base_player import BasePlayer
-from src.model.hand import Hand
+
 from src.model.card import Card
-from src.model.board import Board
+from src.model.hand import Hand
+from src.model.player.base_player import BasePlayer
 from src.model.strategy.choose_card.base_choose_card_strategy import BaseChooseCardStrategy
 from src.model.strategy.choose_row.base_choose_row_strategy import BaseChooseRowStrategy
+
 
 class TestBasePlayer(unittest.TestCase):
 
@@ -38,7 +39,13 @@ class TestBasePlayer(unittest.TestCase):
 
         # Assert
         self.assertEqual(chosen_card, card)
-        self.choose_card_strategy.choose_card.assert_called_once_with(hand=self.player.hand, board=None)
+        self.choose_card_strategy.choose_card.assert_called_once_with(
+            hand=self.player.hand,
+            board=None,
+            current_round=None,
+            current_turn=None,
+            chosen_cards_history=None
+        )
 
     def test_choose_row(self):
         # Arrange
@@ -83,6 +90,7 @@ class TestBasePlayer(unittest.TestCase):
         # Assert
         self.assertEqual(self.player.total_points, 0)
         self.assertEqual(self.player.round_points, [])
+
 
 if __name__ == '__main__':
     unittest.main()

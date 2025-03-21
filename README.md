@@ -10,6 +10,7 @@
 - [Players](#players)
     - [Create a new Player](#create-a-new-player)
     - [Player types](#player-types)
+- [Test](#test)
 
 ## What is Toma 6?
 
@@ -109,8 +110,21 @@ or `BaseChooseRowStrategy` and implement the abstract methods.
 | `mid`       | `MidPlayer`    | `MidChooseCardStrategy`    | `MinPointsChooseRowStrategy` | A player that always picks the card with the mid value in its hand. When choosing a row, choose the row with less points.                                                                              |
 | `max`       | `MaxPlayer`    | `MaxChooseCardStrategy`    | `MinPointsChooseRowStrategy` | A player that always picks the card with the highest value in its hand. When choosing a row, choose the row with less points.                                                                          |
 
+# Test
+
+Run:
+
+```bash
+pytest
+```
+
 # TODO
 
-- Add tests (github actions and test pass check in README)
+- Add tests
+  - GitHub actions and test pass check in README
+  - Strategy tests
 - Player config creation with strategy instead of player type?
 - Add example simulation results
+- Add game rules link
+- What is needed for RL?
+    - Add chose row history
