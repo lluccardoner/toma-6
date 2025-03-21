@@ -86,6 +86,12 @@ The output of a simulation is:
   games. Only saved if the number of games is less than 100.
 - `is_winner.png`: a bar plot of the percentage of games won by each player in the simulation.
 
+See an example output [here](resources/example_simulation_results) after running:
+
+```bash
+python main_simulation.py --seed 42 --num-games 100 --config "6-random_1-min_1-mid_1-max_1.json"
+```
+
 ## Players
 
 Here comes the fun part. The idea is to code different types of players and see which one wins more games.
@@ -127,7 +133,6 @@ pytest
 
 - Add tests
     - Strategy tests
-- Add example simulation results
 - What is needed for RL?
     - Add chose row history
 - Player config creation with strategy instead of player type?

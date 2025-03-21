@@ -1,0 +1,1118 @@
+Starting game [seed=1825]
+Starting round 1
+Dealing 10 cards to each player...
+Initializing board...
+
+
+##########
+Row 1: [54]
+Row 2: [35]
+Row 3: [49]
+Row 4: [8]
+----------
+Random player 1: 0 points [15, 19, 25, 55, 58, 71, 73, 74, 100, 103]
+Min player 1: 0 points [21, 23, 26, 29, 53, 63, 76, 78, 80, 92]
+Mid player 1: 0 points [24, 41, 51, 52, 59, 61, 62, 69, 96, 101]
+Max player 1: 0 points [12, 16, 37, 56, 66, 72, 79, 82, 86, 95]
+##########
+
+
+Playing round:1|turn:1
+Players choose cards...
+Random player 1 -> 15
+Min player 1 -> 21
+Mid player 1 -> 59
+Max player 1 -> 95
+Playing cards...
+Random player 1 -> Must play card in row 4
+Min player 1 -> Must play card in row 4
+Mid player 1 -> Must play card in row 1
+Max player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [54, 59, 95]
+Row 2: [35]
+Row 3: [49]
+Row 4: [8, 15, 21]
+----------
+Random player 1: 0 points [19, 25, 55, 58, 71, 73, 74, 100, 103]
+Min player 1: 0 points [23, 26, 29, 53, 63, 76, 78, 80, 92]
+Mid player 1: 0 points [24, 41, 51, 52, 61, 62, 69, 96, 101]
+Max player 1: 0 points [12, 16, 37, 56, 66, 72, 79, 82, 86]
+##########
+
+
+Playing round:1|turn:2
+Players choose cards...
+Min player 1 -> 23
+Mid player 1 -> 61
+Random player 1 -> 71
+Max player 1 -> 86
+Playing cards...
+Min player 1 -> Must play card in row 4
+Mid player 1 -> Must play card in row 3
+Random player 1 -> Must play card in row 3
+Max player 1 -> Must play card in row 3
+
+
+##########
+Row 1: [54, 59, 95]
+Row 2: [35]
+Row 3: [49, 61, 71, 86]
+Row 4: [8, 15, 21, 23]
+----------
+Random player 1: 0 points [19, 25, 55, 58, 73, 74, 100, 103]
+Min player 1: 0 points [26, 29, 53, 63, 76, 78, 80, 92]
+Mid player 1: 0 points [24, 41, 51, 52, 62, 69, 96, 101]
+Max player 1: 0 points [12, 16, 37, 56, 66, 72, 79, 82]
+##########
+
+
+Playing round:1|turn:3
+Players choose cards...
+Min player 1 -> 26
+Mid player 1 -> 52
+Random player 1 -> 55
+Max player 1 -> 82
+Playing cards...
+Min player 1 -> Must play card in row 4
+Mid player 1 -> Must play card in row 2
+Random player 1 -> Must play card in row 2
+Max player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [54, 59, 95]
+Row 2: [35, 52, 55, 82]
+Row 3: [49, 61, 71, 86]
+Row 4: [8, 15, 21, 23, 26]
+----------
+Random player 1: 0 points [19, 25, 58, 73, 74, 100, 103]
+Min player 1: 0 points [29, 53, 63, 76, 78, 80, 92]
+Mid player 1: 0 points [24, 41, 51, 62, 69, 96, 101]
+Max player 1: 0 points [12, 16, 37, 56, 66, 72, 79]
+##########
+
+
+Playing round:1|turn:4
+Players choose cards...
+Random player 1 -> 19
+Min player 1 -> 29
+Mid player 1 -> 62
+Max player 1 -> 79
+Playing cards...
+Random player 1 -> Can't play the card -> Chose row 1
+Min player 1 -> Must play card in row 4 -> Row is full
+Mid player 1 -> Must play card in row 4
+Max player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [19]
+Row 2: [35, 52, 55, 82]
+Row 3: [49, 61, 71, 86]
+Row 4: [29, 62, 79]
+----------
+Random player 1: 4 points [25, 58, 73, 74, 100, 103]
+Min player 1: 6 points [53, 63, 76, 78, 80, 92]
+Mid player 1: 0 points [24, 41, 51, 69, 96, 101]
+Max player 1: 0 points [12, 16, 37, 56, 66, 72]
+##########
+
+
+Playing round:1|turn:5
+Players choose cards...
+Random player 1 -> 25
+Mid player 1 -> 51
+Min player 1 -> 53
+Max player 1 -> 72
+Playing cards...
+Random player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 1
+Min player 1 -> Must play card in row 1
+Max player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [19, 25, 51, 53, 72]
+Row 2: [35, 52, 55, 82]
+Row 3: [49, 61, 71, 86]
+Row 4: [29, 62, 79]
+----------
+Random player 1: 4 points [58, 73, 74, 100, 103]
+Min player 1: 6 points [63, 76, 78, 80, 92]
+Mid player 1: 0 points [24, 41, 69, 96, 101]
+Max player 1: 0 points [12, 16, 37, 56, 66]
+##########
+
+
+Playing round:1|turn:6
+Players choose cards...
+Min player 1 -> 63
+Max player 1 -> 66
+Mid player 1 -> 69
+Random player 1 -> 100
+Playing cards...
+Min player 1 -> Can't play the card -> Chose row 4
+Max player 1 -> Must play card in row 4
+Mid player 1 -> Must play card in row 4
+Random player 1 -> Must play card in row 3
+
+
+##########
+Row 1: [19, 25, 51, 53, 72]
+Row 2: [35, 52, 55, 82]
+Row 3: [49, 61, 71, 86, 100]
+Row 4: [63, 66, 69]
+----------
+Random player 1: 4 points [58, 73, 74, 103]
+Min player 1: 9 points [76, 78, 80, 92]
+Mid player 1: 0 points [24, 41, 96, 101]
+Max player 1: 0 points [12, 16, 37, 56]
+##########
+
+
+Playing round:1|turn:7
+Players choose cards...
+Mid player 1 -> 41
+Max player 1 -> 56
+Random player 1 -> 74
+Min player 1 -> 76
+Playing cards...
+Mid player 1 -> Can't play the card -> Chose row 1
+Max player 1 -> Must play card in row 1
+Random player 1 -> Must play card in row 4
+Min player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [41, 56]
+Row 2: [35, 52, 55, 82]
+Row 3: [49, 61, 71, 86, 100]
+Row 4: [63, 66, 69, 74, 76]
+----------
+Random player 1: 4 points [58, 73, 103]
+Min player 1: 9 points [78, 80, 92]
+Mid player 1: 6 points [24, 96, 101]
+Max player 1: 0 points [12, 16, 37]
+##########
+
+
+Playing round:1|turn:8
+Players choose cards...
+Max player 1 -> 37
+Random player 1 -> 58
+Min player 1 -> 78
+Mid player 1 -> 96
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 1
+Random player 1 -> Must play card in row 1
+Min player 1 -> Must play card in row 4 -> Row is full
+Mid player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [37, 58]
+Row 2: [35, 52, 55, 82, 96]
+Row 3: [49, 61, 71, 86, 100]
+Row 4: [78]
+----------
+Random player 1: 4 points [73, 103]
+Min player 1: 18 points [80, 92]
+Mid player 1: 6 points [24, 101]
+Max player 1: 2 points [12, 16]
+##########
+
+
+Playing round:1|turn:9
+Players choose cards...
+Max player 1 -> 16
+Mid player 1 -> 24
+Random player 1 -> 73
+Min player 1 -> 80
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 4
+Mid player 1 -> Must play card in row 4
+Random player 1 -> Must play card in row 1
+Min player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [37, 58, 73, 80]
+Row 2: [35, 52, 55, 82, 96]
+Row 3: [49, 61, 71, 86, 100]
+Row 4: [16, 24]
+----------
+Random player 1: 4 points [103]
+Min player 1: 18 points [92]
+Mid player 1: 6 points [101]
+Max player 1: 3 points [12]
+##########
+
+
+Playing round:1|turn:10
+Players choose cards...
+Max player 1 -> 12
+Min player 1 -> 92
+Mid player 1 -> 101
+Random player 1 -> 103
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 4
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 3 -> Row is full
+Random player 1 -> Must play card in row 3
+
+
+##########
+Row 1: [37, 58, 73, 80, 92]
+Row 2: [35, 52, 55, 82, 96]
+Row 3: [101, 103]
+Row 4: [12]
+----------
+Random player 1: 4 points []
+Min player 1: 18 points []
+Mid player 1: 13 points []
+Max player 1: 5 points []
+##########
+
+
+Starting round 2
+Dealing 10 cards to each player...
+Initializing board...
+
+
+##########
+Row 1: [68]
+Row 2: [42]
+Row 3: [73]
+Row 4: [40]
+----------
+Random player 1: 4 points [3, 22, 27, 41, 44, 58, 59, 76, 84, 87]
+Min player 1: 18 points [23, 36, 38, 61, 77, 78, 83, 86, 96, 97]
+Mid player 1: 13 points [2, 20, 34, 48, 49, 51, 63, 90, 92, 93]
+Max player 1: 5 points [7, 10, 17, 24, 31, 54, 75, 91, 101, 102]
+##########
+
+
+Playing round:2|turn:1
+Players choose cards...
+Min player 1 -> 23
+Random player 1 -> 27
+Mid player 1 -> 49
+Max player 1 -> 102
+Playing cards...
+Min player 1 -> Can't play the card -> Chose row 1
+Random player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 2
+Max player 1 -> Must play card in row 3
+
+
+##########
+Row 1: [23, 27]
+Row 2: [42, 49]
+Row 3: [73, 102]
+Row 4: [40]
+----------
+Random player 1: 4 points [3, 22, 41, 44, 58, 59, 76, 84, 87]
+Min player 1: 19 points [36, 38, 61, 77, 78, 83, 86, 96, 97]
+Mid player 1: 13 points [2, 20, 34, 48, 51, 63, 90, 92, 93]
+Max player 1: 5 points [7, 10, 17, 24, 31, 54, 75, 91, 101]
+##########
+
+
+Playing round:2|turn:2
+Players choose cards...
+Random player 1 -> 3
+Min player 1 -> 36
+Mid player 1 -> 51
+Max player 1 -> 101
+Playing cards...
+Random player 1 -> Can't play the card -> Chose row 3
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 2
+Max player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [23, 27, 36]
+Row 2: [42, 49, 51, 101]
+Row 3: [3]
+Row 4: [40]
+----------
+Random player 1: 6 points [22, 41, 44, 58, 59, 76, 84, 87]
+Min player 1: 19 points [38, 61, 77, 78, 83, 86, 96, 97]
+Mid player 1: 13 points [2, 20, 34, 48, 63, 90, 92, 93]
+Max player 1: 5 points [7, 10, 17, 24, 31, 54, 75, 91]
+##########
+
+
+Playing round:2|turn:3
+Players choose cards...
+Min player 1 -> 38
+Mid player 1 -> 48
+Random player 1 -> 58
+Max player 1 -> 91
+Playing cards...
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 4
+Random player 1 -> Must play card in row 4
+Max player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [23, 27, 36, 38]
+Row 2: [42, 49, 51, 101]
+Row 3: [3]
+Row 4: [40, 48, 58, 91]
+----------
+Random player 1: 6 points [22, 41, 44, 59, 76, 84, 87]
+Min player 1: 19 points [61, 77, 78, 83, 86, 96, 97]
+Mid player 1: 13 points [2, 20, 34, 63, 90, 92, 93]
+Max player 1: 5 points [7, 10, 17, 24, 31, 54, 75]
+##########
+
+
+Playing round:2|turn:4
+Players choose cards...
+Random player 1 -> 44
+Min player 1 -> 61
+Mid player 1 -> 63
+Max player 1 -> 75
+Playing cards...
+Random player 1 -> Must play card in row 1
+Min player 1 -> Must play card in row 1 -> Row is full
+Mid player 1 -> Must play card in row 1
+Max player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [61, 63, 75]
+Row 2: [42, 49, 51, 101]
+Row 3: [3]
+Row 4: [40, 48, 58, 91]
+----------
+Random player 1: 6 points [22, 41, 59, 76, 84, 87]
+Min player 1: 28 points [77, 78, 83, 86, 96, 97]
+Mid player 1: 13 points [2, 20, 34, 90, 92, 93]
+Max player 1: 5 points [7, 10, 17, 24, 31, 54]
+##########
+
+
+Playing round:2|turn:5
+Players choose cards...
+Random player 1 -> 22
+Mid player 1 -> 34
+Max player 1 -> 54
+Min player 1 -> 77
+Playing cards...
+Random player 1 -> Must play card in row 3
+Mid player 1 -> Must play card in row 3
+Max player 1 -> Must play card in row 3
+Min player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [61, 63, 75, 77]
+Row 2: [42, 49, 51, 101]
+Row 3: [3, 22, 34, 54]
+Row 4: [40, 48, 58, 91]
+----------
+Random player 1: 6 points [41, 59, 76, 84, 87]
+Min player 1: 28 points [78, 83, 86, 96, 97]
+Mid player 1: 13 points [2, 20, 90, 92, 93]
+Max player 1: 5 points [7, 10, 17, 24, 31]
+##########
+
+
+Playing round:2|turn:6
+Players choose cards...
+Max player 1 -> 31
+Random player 1 -> 59
+Min player 1 -> 78
+Mid player 1 -> 90
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 2
+Random player 1 -> Must play card in row 3
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 1 -> Row is full
+
+
+##########
+Row 1: [90]
+Row 2: [31]
+Row 3: [3, 22, 34, 54, 59]
+Row 4: [40, 48, 58, 91]
+----------
+Random player 1: 6 points [41, 76, 84, 87]
+Min player 1: 28 points [83, 86, 96, 97]
+Mid player 1: 23 points [2, 20, 92, 93]
+Max player 1: 9 points [7, 10, 17, 24]
+##########
+
+
+Playing round:2|turn:7
+Players choose cards...
+Mid player 1 -> 20
+Max player 1 -> 24
+Min player 1 -> 83
+Random player 1 -> 87
+Playing cards...
+Mid player 1 -> Can't play the card -> Chose row 2
+Max player 1 -> Must play card in row 2
+Min player 1 -> Must play card in row 3 -> Row is full
+Random player 1 -> Must play card in row 3
+
+
+##########
+Row 1: [90]
+Row 2: [20, 24]
+Row 3: [83, 87]
+Row 4: [40, 48, 58, 91]
+----------
+Random player 1: 6 points [41, 76, 84]
+Min player 1: 37 points [86, 96, 97]
+Mid player 1: 24 points [2, 92, 93]
+Max player 1: 9 points [7, 10, 17]
+##########
+
+
+Playing round:2|turn:8
+Players choose cards...
+Max player 1 -> 17
+Random player 1 -> 84
+Min player 1 -> 86
+Mid player 1 -> 92
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 3
+Random player 1 -> Must play card in row 2
+Min player 1 -> Must play card in row 2
+Mid player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [90]
+Row 2: [20, 24, 84, 86]
+Row 3: [17]
+Row 4: [40, 48, 58, 91, 92]
+----------
+Random player 1: 6 points [41, 76]
+Min player 1: 37 points [96, 97]
+Mid player 1: 24 points [2, 93]
+Max player 1: 11 points [7, 10]
+##########
+
+
+Playing round:2|turn:9
+Players choose cards...
+Mid player 1 -> 2
+Max player 1 -> 10
+Random player 1 -> 41
+Min player 1 -> 96
+Playing cards...
+Mid player 1 -> Can't play the card -> Chose row 3
+Max player 1 -> Must play card in row 3
+Random player 1 -> Must play card in row 3
+Min player 1 -> Must play card in row 4 -> Row is full
+
+
+##########
+Row 1: [90]
+Row 2: [20, 24, 84, 86]
+Row 3: [2, 10, 41]
+Row 4: [96]
+----------
+Random player 1: 6 points [76]
+Min player 1: 44 points [97]
+Mid player 1: 25 points [93]
+Max player 1: 11 points [7]
+##########
+
+
+Playing round:2|turn:10
+Players choose cards...
+Max player 1 -> 7
+Random player 1 -> 76
+Mid player 1 -> 93
+Min player 1 -> 97
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 4
+Random player 1 -> Must play card in row 3
+Mid player 1 -> Must play card in row 1
+Min player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [90, 93, 97]
+Row 2: [20, 24, 84, 86]
+Row 3: [2, 10, 41, 76]
+Row 4: [7]
+----------
+Random player 1: 6 points []
+Min player 1: 44 points []
+Mid player 1: 25 points []
+Max player 1: 12 points []
+##########
+
+
+Starting round 3
+Dealing 10 cards to each player...
+Initializing board...
+
+
+##########
+Row 1: [59]
+Row 2: [67]
+Row 3: [82]
+Row 4: [36]
+----------
+Random player 1: 6 points [26, 27, 29, 34, 39, 47, 52, 79, 95, 97]
+Min player 1: 44 points [9, 35, 42, 50, 60, 61, 69, 72, 94, 104]
+Mid player 1: 25 points [1, 16, 40, 44, 76, 77, 89, 90, 93, 103]
+Max player 1: 12 points [20, 24, 25, 63, 65, 74, 84, 86, 99, 101]
+##########
+
+
+Playing round:3|turn:1
+Players choose cards...
+Min player 1 -> 9
+Mid player 1 -> 76
+Random player 1 -> 79
+Max player 1 -> 101
+Playing cards...
+Min player 1 -> Can't play the card -> Chose row 1
+Mid player 1 -> Must play card in row 2
+Random player 1 -> Must play card in row 2
+Max player 1 -> Must play card in row 3
+
+
+##########
+Row 1: [9]
+Row 2: [67, 76, 79]
+Row 3: [82, 101]
+Row 4: [36]
+----------
+Random player 1: 6 points [26, 27, 29, 34, 39, 47, 52, 95, 97]
+Min player 1: 45 points [35, 42, 50, 60, 61, 69, 72, 94, 104]
+Mid player 1: 25 points [1, 16, 40, 44, 77, 89, 90, 93, 103]
+Max player 1: 12 points [20, 24, 25, 63, 65, 74, 84, 86, 99]
+##########
+
+
+Playing round:3|turn:2
+Players choose cards...
+Min player 1 -> 35
+Mid player 1 -> 77
+Random player 1 -> 97
+Max player 1 -> 99
+Playing cards...
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 4
+Random player 1 -> Must play card in row 2
+Max player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [9, 35]
+Row 2: [67, 76, 79, 97, 99]
+Row 3: [82, 101]
+Row 4: [36, 77]
+----------
+Random player 1: 6 points [26, 27, 29, 34, 39, 47, 52, 95]
+Min player 1: 45 points [42, 50, 60, 61, 69, 72, 94, 104]
+Mid player 1: 25 points [1, 16, 40, 44, 89, 90, 93, 103]
+Max player 1: 12 points [20, 24, 25, 63, 65, 74, 84, 86]
+##########
+
+
+Playing round:3|turn:3
+Players choose cards...
+Random player 1 -> 39
+Min player 1 -> 42
+Mid player 1 -> 44
+Max player 1 -> 86
+Playing cards...
+Random player 1 -> Must play card in row 1
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 1
+Max player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [9, 35, 39, 42, 44]
+Row 2: [67, 76, 79, 97, 99]
+Row 3: [82, 101]
+Row 4: [36, 77, 86]
+----------
+Random player 1: 6 points [26, 27, 29, 34, 47, 52, 95]
+Min player 1: 45 points [50, 60, 61, 69, 72, 94, 104]
+Mid player 1: 25 points [1, 16, 40, 89, 90, 93, 103]
+Max player 1: 12 points [20, 24, 25, 63, 65, 74, 84]
+##########
+
+
+Playing round:3|turn:4
+Players choose cards...
+Random player 1 -> 29
+Min player 1 -> 50
+Max player 1 -> 84
+Mid player 1 -> 89
+Playing cards...
+Random player 1 -> Can't play the card -> Chose row 2
+Min player 1 -> Must play card in row 1 -> Row is full
+Max player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [50, 84]
+Row 2: [29]
+Row 3: [82, 101]
+Row 4: [36, 77, 86, 89]
+----------
+Random player 1: 15 points [26, 27, 34, 47, 52, 95]
+Min player 1: 55 points [60, 61, 69, 72, 94, 104]
+Mid player 1: 25 points [1, 16, 40, 90, 93, 103]
+Max player 1: 12 points [20, 24, 25, 63, 65, 74]
+##########
+
+
+Playing round:3|turn:5
+Players choose cards...
+Random player 1 -> 27
+Mid player 1 -> 40
+Min player 1 -> 60
+Max player 1 -> 74
+Playing cards...
+Random player 1 -> Can't play the card -> Chose row 1
+Mid player 1 -> Must play card in row 2
+Min player 1 -> Must play card in row 2
+Max player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [27]
+Row 2: [29, 40, 60, 74]
+Row 3: [82, 101]
+Row 4: [36, 77, 86, 89]
+----------
+Random player 1: 19 points [26, 34, 47, 52, 95]
+Min player 1: 55 points [61, 69, 72, 94, 104]
+Mid player 1: 25 points [1, 16, 90, 93, 103]
+Max player 1: 12 points [20, 24, 25, 63, 65]
+##########
+
+
+Playing round:3|turn:6
+Players choose cards...
+Random player 1 -> 26
+Min player 1 -> 61
+Max player 1 -> 65
+Mid player 1 -> 90
+Playing cards...
+Random player 1 -> Can't play the card -> Chose row 1
+Min player 1 -> Must play card in row 1
+Max player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [26, 61, 65]
+Row 2: [29, 40, 60, 74]
+Row 3: [82, 101]
+Row 4: [36, 77, 86, 89, 90]
+----------
+Random player 1: 20 points [34, 47, 52, 95]
+Min player 1: 55 points [69, 72, 94, 104]
+Mid player 1: 25 points [1, 16, 93, 103]
+Max player 1: 12 points [20, 24, 25, 63]
+##########
+
+
+Playing round:3|turn:7
+Players choose cards...
+Mid player 1 -> 16
+Random player 1 -> 34
+Max player 1 -> 63
+Min player 1 -> 69
+Playing cards...
+Mid player 1 -> Can't play the card -> Chose row 3
+Random player 1 -> Must play card in row 3
+Max player 1 -> Must play card in row 3
+Min player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [26, 61, 65, 69]
+Row 2: [29, 40, 60, 74]
+Row 3: [16, 34, 63]
+Row 4: [36, 77, 86, 89, 90]
+----------
+Random player 1: 20 points [47, 52, 95]
+Min player 1: 55 points [72, 94, 104]
+Mid player 1: 27 points [1, 93, 103]
+Max player 1: 12 points [20, 24, 25]
+##########
+
+
+Playing round:3|turn:8
+Players choose cards...
+Max player 1 -> 25
+Random player 1 -> 52
+Min player 1 -> 72
+Mid player 1 -> 93
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 3
+Random player 1 -> Must play card in row 3
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 4 -> Row is full
+
+
+##########
+Row 1: [26, 61, 65, 69, 72]
+Row 2: [29, 40, 60, 74]
+Row 3: [25, 52]
+Row 4: [93]
+----------
+Random player 1: 20 points [47, 95]
+Min player 1: 55 points [94, 104]
+Mid player 1: 38 points [1, 103]
+Max player 1: 15 points [20, 24]
+##########
+
+
+Playing round:3|turn:9
+Players choose cards...
+Mid player 1 -> 1
+Max player 1 -> 24
+Random player 1 -> 47
+Min player 1 -> 94
+Playing cards...
+Mid player 1 -> Can't play the card -> Chose row 4
+Max player 1 -> Must play card in row 4
+Random player 1 -> Must play card in row 4
+Min player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [26, 61, 65, 69, 72]
+Row 2: [29, 40, 60, 74, 94]
+Row 3: [25, 52]
+Row 4: [1, 24, 47]
+----------
+Random player 1: 20 points [95]
+Min player 1: 55 points [104]
+Mid player 1: 39 points [103]
+Max player 1: 15 points [20]
+##########
+
+
+Playing round:3|turn:10
+Players choose cards...
+Max player 1 -> 20
+Random player 1 -> 95
+Mid player 1 -> 103
+Min player 1 -> 104
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 3
+Random player 1 -> Must play card in row 2 -> Row is full
+Mid player 1 -> Must play card in row 2
+Min player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [26, 61, 65, 69, 72]
+Row 2: [95, 103, 104]
+Row 3: [20]
+Row 4: [1, 24, 47]
+----------
+Random player 1: 29 points []
+Min player 1: 55 points []
+Mid player 1: 39 points []
+Max player 1: 18 points []
+##########
+
+
+Starting round 4
+Dealing 10 cards to each player...
+Initializing board...
+
+
+##########
+Row 1: [67]
+Row 2: [95]
+Row 3: [87]
+Row 4: [72]
+----------
+Random player 1: 29 points [14, 20, 22, 43, 56, 59, 69, 71, 74, 89]
+Min player 1: 55 points [9, 16, 26, 42, 47, 49, 50, 66, 92, 97]
+Mid player 1: 39 points [2, 3, 13, 21, 27, 29, 48, 62, 70, 104]
+Max player 1: 18 points [6, 28, 36, 61, 78, 86, 88, 98, 100, 103]
+##########
+
+
+Playing round:4|turn:1
+Players choose cards...
+Min player 1 -> 9
+Random player 1 -> 20
+Mid player 1 -> 27
+Max player 1 -> 103
+Playing cards...
+Min player 1 -> Can't play the card -> Chose row 1
+Random player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 1
+Max player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [9, 20, 27]
+Row 2: [95, 103]
+Row 3: [87]
+Row 4: [72]
+----------
+Random player 1: 29 points [14, 22, 43, 56, 59, 69, 71, 74, 89]
+Min player 1: 56 points [16, 26, 42, 47, 49, 50, 66, 92, 97]
+Mid player 1: 39 points [2, 3, 13, 21, 29, 48, 62, 70, 104]
+Max player 1: 18 points [6, 28, 36, 61, 78, 86, 88, 98, 100]
+##########
+
+
+Playing round:4|turn:2
+Players choose cards...
+Min player 1 -> 16
+Mid player 1 -> 29
+Random player 1 -> 89
+Max player 1 -> 100
+Playing cards...
+Min player 1 -> Can't play the card -> Chose row 3
+Mid player 1 -> Must play card in row 1
+Random player 1 -> Must play card in row 4
+Max player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [9, 20, 27, 29]
+Row 2: [95, 103]
+Row 3: [16]
+Row 4: [72, 89, 100]
+----------
+Random player 1: 29 points [14, 22, 43, 56, 59, 69, 71, 74]
+Min player 1: 57 points [26, 42, 47, 49, 50, 66, 92, 97]
+Mid player 1: 39 points [2, 3, 13, 21, 48, 62, 70, 104]
+Max player 1: 18 points [6, 28, 36, 61, 78, 86, 88, 98]
+##########
+
+
+Playing round:4|turn:3
+Players choose cards...
+Mid player 1 -> 21
+Min player 1 -> 26
+Random player 1 -> 59
+Max player 1 -> 98
+Playing cards...
+Mid player 1 -> Must play card in row 3
+Min player 1 -> Must play card in row 3
+Random player 1 -> Must play card in row 1
+Max player 1 -> Must play card in row 1 -> Row is full
+
+
+##########
+Row 1: [98]
+Row 2: [95, 103]
+Row 3: [16, 21, 26]
+Row 4: [72, 89, 100]
+----------
+Random player 1: 29 points [14, 22, 43, 56, 69, 71, 74]
+Min player 1: 57 points [42, 47, 49, 50, 66, 92, 97]
+Mid player 1: 39 points [2, 3, 13, 48, 62, 70, 104]
+Max player 1: 25 points [6, 28, 36, 61, 78, 86, 88]
+##########
+
+
+Playing round:4|turn:4
+Players choose cards...
+Random player 1 -> 22
+Min player 1 -> 42
+Mid player 1 -> 48
+Max player 1 -> 88
+Playing cards...
+Random player 1 -> Can't play the card -> Chose row 4
+Min player 1 -> Must play card in row 3
+Mid player 1 -> Must play card in row 3
+Max player 1 -> Must play card in row 3 -> Row is full
+
+
+##########
+Row 1: [98]
+Row 2: [95, 103]
+Row 3: [88]
+Row 4: [22]
+----------
+Random player 1: 34 points [14, 43, 56, 69, 71, 74]
+Min player 1: 57 points [47, 49, 50, 66, 92, 97]
+Mid player 1: 39 points [2, 3, 13, 62, 70, 104]
+Max player 1: 30 points [6, 28, 36, 61, 78, 86]
+##########
+
+
+Playing round:4|turn:5
+Players choose cards...
+Mid player 1 -> 13
+Random player 1 -> 43
+Min player 1 -> 47
+Max player 1 -> 86
+Playing cards...
+Mid player 1 -> Can't play the card -> Chose row 1
+Random player 1 -> Must play card in row 4
+Min player 1 -> Must play card in row 4
+Max player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [13]
+Row 2: [95, 103]
+Row 3: [88]
+Row 4: [22, 43, 47, 86]
+----------
+Random player 1: 34 points [14, 56, 69, 71, 74]
+Min player 1: 57 points [49, 50, 66, 92, 97]
+Mid player 1: 40 points [2, 3, 62, 70, 104]
+Max player 1: 30 points [6, 28, 36, 61, 78]
+##########
+
+
+Playing round:4|turn:6
+Players choose cards...
+Random player 1 -> 14
+Min player 1 -> 49
+Mid player 1 -> 62
+Max player 1 -> 78
+Playing cards...
+Random player 1 -> Must play card in row 1
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 1
+Max player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [13, 14, 49, 62, 78]
+Row 2: [95, 103]
+Row 3: [88]
+Row 4: [22, 43, 47, 86]
+----------
+Random player 1: 34 points [56, 69, 71, 74]
+Min player 1: 57 points [50, 66, 92, 97]
+Mid player 1: 40 points [2, 3, 70, 104]
+Max player 1: 30 points [6, 28, 36, 61]
+##########
+
+
+Playing round:4|turn:7
+Players choose cards...
+Mid player 1 -> 3
+Min player 1 -> 50
+Max player 1 -> 61
+Random player 1 -> 74
+Playing cards...
+Mid player 1 -> Can't play the card -> Chose row 2
+Min player 1 -> Must play card in row 2
+Max player 1 -> Must play card in row 2
+Random player 1 -> Must play card in row 2
+
+
+##########
+Row 1: [13, 14, 49, 62, 78]
+Row 2: [3, 50, 61, 74]
+Row 3: [88]
+Row 4: [22, 43, 47, 86]
+----------
+Random player 1: 34 points [56, 69, 71]
+Min player 1: 57 points [66, 92, 97]
+Mid player 1: 43 points [2, 70, 104]
+Max player 1: 30 points [6, 28, 36]
+##########
+
+
+Playing round:4|turn:8
+Players choose cards...
+Max player 1 -> 36
+Min player 1 -> 66
+Mid player 1 -> 70
+Random player 1 -> 71
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 1
+Min player 1 -> Must play card in row 1
+Mid player 1 -> Must play card in row 1
+Random player 1 -> Must play card in row 1
+
+
+##########
+Row 1: [36, 66, 70, 71]
+Row 2: [3, 50, 61, 74]
+Row 3: [88]
+Row 4: [22, 43, 47, 86]
+----------
+Random player 1: 34 points [56, 69]
+Min player 1: 57 points [92, 97]
+Mid player 1: 43 points [2, 104]
+Max player 1: 35 points [6, 28]
+##########
+
+
+Playing round:4|turn:9
+Players choose cards...
+Mid player 1 -> 2
+Max player 1 -> 28
+Random player 1 -> 56
+Min player 1 -> 92
+Playing cards...
+Mid player 1 -> Can't play the card -> Chose row 3
+Max player 1 -> Must play card in row 3
+Random player 1 -> Must play card in row 3
+Min player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [36, 66, 70, 71]
+Row 2: [3, 50, 61, 74]
+Row 3: [2, 28, 56]
+Row 4: [22, 43, 47, 86, 92]
+----------
+Random player 1: 34 points [69]
+Min player 1: 57 points [97]
+Mid player 1: 48 points [104]
+Max player 1: 35 points [6]
+##########
+
+
+Playing round:4|turn:10
+Players choose cards...
+Max player 1 -> 6
+Random player 1 -> 69
+Min player 1 -> 97
+Mid player 1 -> 104
+Playing cards...
+Max player 1 -> Can't play the card -> Chose row 3
+Random player 1 -> Must play card in row 3
+Min player 1 -> Must play card in row 4 -> Row is full
+Mid player 1 -> Must play card in row 4
+
+
+##########
+Row 1: [36, 66, 70, 71]
+Row 2: [3, 50, 61, 74]
+Row 3: [6, 69]
+Row 4: [97, 104]
+----------
+Random player 1: 34 points []
+Min player 1: 66 points []
+Mid player 1: 48 points []
+Max player 1: 38 points []
+##########
+
+
+Results:
+Random player 1 -> total: 34, rounds: [4, 2, 23, 5]
+Max player 1 -> total: 38, rounds: [5, 7, 6, 20]
+Mid player 1 -> total: 48, rounds: [13, 12, 14, 9]
+Min player 1 -> total: 66, rounds: [18, 26, 11, 11]
