@@ -26,6 +26,8 @@ Rounds are played until a player reaches 66 points, whereupon the player with th
 
 Note: current implementation is 4 rounds instead of reaching 66 points.
 
+See full rules [here](resources/toma_6_rules_en.pdf).
+
 ## Game config
 
 Under the `config` folder, different game configs can be defined.
@@ -126,7 +128,6 @@ pytest
 - Add tests
     - Strategy tests
 - Add example simulation results
-- Add game rules link
 - What is needed for RL?
     - Add chose row history
 - Player config creation with strategy instead of player type?
