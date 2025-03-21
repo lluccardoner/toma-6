@@ -1,5 +1,7 @@
 # Toma 6 simulations
 
+![Tests](https://github.com/lluccardoner/toma-6/actions/workflows/test.yaml/badge.svg)
+
 ## Table of Contents
 
 - [What is Toma 6?](#what-is-toma-6)
@@ -121,8 +123,8 @@ pytest
 # TODO
 
 - Add tests
-  - GitHub actions and test pass check in README
-  - Strategy tests
+    - GitHub actions and test pass check in README
+    - Strategy tests
 - Player config creation with strategy instead of player type?
 - Add example simulation results
 - Add game rules link
