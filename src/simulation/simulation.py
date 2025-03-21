@@ -32,6 +32,7 @@ class Simulation:
         self.game_config = game_config
         self.num_games = num_games
         self.results = pd.DataFrame()
+        self.is_winner_results = pd.DataFrame()
 
     def run(self):
         self.logger.info(f"Running simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
@@ -73,12 +74,21 @@ class Simulation:
 
             self.results = pd.concat([self.results, game_results], ignore_index=True)
 
+        self.is_winner_results = self.compute_winner_results()
+        print(self.is_winner_results)
         self.save_results()
         self.plot_results()
         self.logger.info(f"Finished simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
 
+    def compute_winner_results(self) -> pd.DataFrame:
+        return self.results.groupby("player_name")["is_winner"].agg(
+            total_games_won="sum",
+            pct_games_won="mean"
+        ).sort_values(by="total_games_won", ascending=False).reset_index()
+
     def save_results(self):
-        self.results.to_csv(os.path.join(self.output_path, "results.csv"), index=False)
+        self.is_winner_results.to_csv(os.path.join(self.output_path, "is_winner_results.csv"), index=False)
+        self.results.to_csv(os.path.join(self.output_path, "simulation_results.csv"), index=False)
 
     def plot_results(self):
         title = (

@@ -77,10 +77,11 @@ Each simulation has a unique ID. The simulation output is saved in the created s
 The output of a simulation is:
 
 - `game-sample.log`: the game log of a sample of games. A game is logged every 100 games.
-- `results.csv`: a pandas DataFrame in CSV format with the simulation results.
+- `simulation_results.csv`: a pandas DataFrame in CSV format with the simulation results.
+- `is_winner_results.csv`: a pandas DataFrame in CSV format with the games won by each player.
 - `box.png`: a box plot of all the final points of the N games for each player (fewer points is better).
 - `violin.png`: a violin plot of the distribution of final points per game fore each player. Split between won and lost
-  games.
+  games. Only saved if the number of games is less than 100.
 - `is_winner.png`: a bar plot of the percentage of games won by each player in the simulation.
 
 ## Players
@@ -123,10 +124,9 @@ pytest
 # TODO
 
 - Add tests
-    - GitHub actions and test pass check in README
     - Strategy tests
-- Player config creation with strategy instead of player type?
 - Add example simulation results
 - Add game rules link
 - What is needed for RL?
     - Add chose row history
+- Player config creation with strategy instead of player type?
