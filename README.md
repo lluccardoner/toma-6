@@ -131,7 +131,5 @@ pytest
 
 # TODO
 
-- What is needed for RL?
-    - Add chose row history
 - Player config creation with strategy instead of player type?
 - Multiple configs simulation log duplicated?

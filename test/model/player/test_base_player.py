@@ -44,7 +44,7 @@ class TestBasePlayer(unittest.TestCase):
             board=None,
             current_round=None,
             current_turn=None,
-            chosen_cards_history=None
+            game_history=None
         )
 
     def test_choose_row(self):

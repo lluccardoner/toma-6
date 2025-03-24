@@ -47,6 +47,7 @@ class TestGameController(unittest.TestCase):
         controller = GameController(config=self.config, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
         controller.players[0].choose_card = MagicMock(return_value=Card(10))
         controller.players[1].choose_card = MagicMock(return_value=Card(5))
+        expected_chosen_cards = {"TestPlayer2": Card(5), "TestPlayer1": Card(10)}
 
         # Act
         chosen_cards = controller.choose_cards(game_round=1, round_turn=1)
@@ -54,7 +55,8 @@ class TestGameController(unittest.TestCase):
         # Assert
         self.assertEqual(len(chosen_cards), 2)
         # Chosen cards are sorted
-        self.assertDictEqual(chosen_cards, {"TestPlayer2": Card(5), "TestPlayer1": Card(10)})
+        self.assertDictEqual(chosen_cards, expected_chosen_cards)
+        self.assertDictEqual(controller.game_history.get_history()[1][1]['chosen_cards'], expected_chosen_cards)
 
     def test_play_cards(self):
         # Arrange
@@ -67,7 +69,7 @@ class TestGameController(unittest.TestCase):
         chosen_cards = {'TestPlayer1': Card(6), 'TestPlayer2': Card(7)}
 
         # Act
-        controller.play_cards(chosen_cards)
+        controller.play_cards(game_round=1, round_turn=1, chosen_cards=chosen_cards)
 
         # Assert
         self.assertEqual(len(controller.board.rows[0]), 2)  # Row got to 6 cards so it restarted
@@ -80,6 +82,11 @@ class TestGameController(unittest.TestCase):
         player_2.choose_row.assert_not_called()
         player_2.add_points.assert_not_called()
         player_2.update_strategy.assert_called_once()
+
+        self.assertDictEqual(
+            controller.game_history.get_history()[1][1]['chosen_rows'],
+            {'TestPlayer1': (0, True), 'TestPlayer2': (None, False)}
+        )
 
     def test_nyam_nyam_nyam(self):
         # Arrange

@@ -1,12 +1,12 @@
 from abc import ABC
 from typing import List, Optional
 
+from src.model.game_history import GameHistory
 from src.model.board import Board
 from src.model.card import Card
 from src.model.hand import Hand
 from src.model.strategy.choose_card.base_choose_card_strategy import BaseChooseCardStrategy
 from src.model.strategy.choose_row.base_choose_row_strategy import BaseChooseRowStrategy
-from src.model.typing import ChosenCardsHistoryType
 
 
 class BasePlayer(ABC):
@@ -26,13 +26,13 @@ class BasePlayer(ABC):
                     board: Optional[Board] = None,
                     current_round: Optional[int] = None,
                     current_turn: Optional[int] = None,
-                    chosen_cards_history: Optional[ChosenCardsHistoryType] = None) -> Card:
+                    game_history: Optional[GameHistory] = None) -> Card:
         return self.choose_card_strategy.choose_card(
             hand=self.hand,
             board=board,
             current_round=current_round,
             current_turn=current_turn,
-            chosen_cards_history=chosen_cards_history
+            game_history=game_history
         )
 
     def update_strategy(self, reward: float):

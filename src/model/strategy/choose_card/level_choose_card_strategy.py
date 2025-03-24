@@ -1,6 +1,6 @@
 from typing import Optional
 
-from src.model.typing import ChosenCardsHistoryType
+from src.model.game_history import GameHistory
 from src.model.board import Board
 from src.model.card import Card
 from src.model.hand import Hand
@@ -20,7 +20,7 @@ class LevelChooseCardStrategy(BaseChooseCardStrategy):
             board: Optional[Board] = None,
             current_round: Optional[int] = None,
             current_turn: Optional[int] = None,
-            chosen_cards_history: Optional[ChosenCardsHistoryType] = None
+            game_history: Optional[GameHistory] = None
     ) -> Card:
         # Hand is always sorted from low to high
         card_index = int((len(hand) - 1) * self.level)
