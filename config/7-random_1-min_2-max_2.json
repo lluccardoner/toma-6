@@ -1,0 +1,26 @@
+{
+  "game_id": "7",
+  "name": "A random, 2 min, and 2 max player playing together",
+  "players": [
+    {
+      "name": "Random player 1",
+      "type": "random"
+    },
+    {
+      "name": "Min player 1",
+      "type": "min"
+    },
+    {
+      "name": "Min player 2",
+      "type": "min"
+    },
+    {
+      "name": "Max player 1",
+      "type": "max"
+    },
+    {
+      "name": "Max player 2",
+      "type": "max"
+    }
+  ]
+}
