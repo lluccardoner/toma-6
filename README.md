@@ -131,5 +131,4 @@ pytest
 
 # TODO
 
-- Player config creation with strategy instead of player type?
-- Multiple configs simulation log duplicated?
+- Fix logging. Only create one instance and modify the handlers.
