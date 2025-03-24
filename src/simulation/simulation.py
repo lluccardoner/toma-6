@@ -103,7 +103,7 @@ class Simulation:
         self.plot_box(title)
 
     def plot_is_winner(self, title):
-        plt.figure(figsize=(12, 6))
+        fig = plt.figure(figsize=(12, 6))
         sns.catplot(
             data=self.results,
             x="player_name",
@@ -118,9 +118,10 @@ class Simulation:
         plt.grid(True, linestyle="--", alpha=0.5)
 
         plt.savefig(os.path.join(self.output_path, "is_winner.png"), dpi=300, bbox_inches="tight")
+        plt.close(fig)
 
     def plot_swarm(self, title):
-        plt.figure(figsize=(12, 6))
+        fig = plt.figure(figsize=(12, 6))
         sns.catplot(
             data=self.results,
             x="player_name",
@@ -136,9 +137,10 @@ class Simulation:
         plt.grid(True, linestyle="--", alpha=0.5)
 
         plt.savefig(os.path.join(self.output_path, "swarm.png"), dpi=300, bbox_inches="tight")
+        plt.close(fig)
 
     def plot_violin(self, title):
-        plt.figure(figsize=(12, 6))
+        fig = plt.figure(figsize=(12, 6))
         sns.violinplot(
             data=self.results,
             x="player_name",
@@ -159,9 +161,10 @@ class Simulation:
         plt.grid(True, linestyle="--", alpha=0.5)
 
         plt.savefig(os.path.join(self.output_path, "violin.png"), dpi=300, bbox_inches="tight")
+        plt.close(fig)
 
     def plot_box(self, title):
-        plt.figure(figsize=(12, 6))
+        fig = plt.figure(figsize=(12, 6))
         sns.catplot(
             kind="box",
             data=self.results,
@@ -176,3 +179,4 @@ class Simulation:
         plt.grid(True, linestyle="--", alpha=0.5)
 
         plt.savefig(os.path.join(self.output_path, "box.png"), dpi=300, bbox_inches="tight")
+        plt.close(fig)
