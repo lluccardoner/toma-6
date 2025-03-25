@@ -128,7 +128,3 @@ Run:
 ```bash
 pytest
 ```
-
-# TODO
-
-- Fix logging. Only create one instance and modify the handlers.

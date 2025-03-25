@@ -53,6 +53,8 @@ def get_simulation_logger() -> Logger:
     formatter = detailed_formatter
     handler = get_console_handler(formatter)
     logger = getLogger("Simulation")
+    if logger.hasHandlers():
+        logger.handlers.clear()
     logger.addHandler(handler)
     logger.setLevel(INFO)
     logger.propagate = False
@@ -63,6 +65,8 @@ def get_controller_logger(log_level: int = INFO, log_file: Optional[str] = None)
     formatter = plain_formatter if log_file else detailed_formatter
     handler = get_memory_file_handler(formatter, log_file) if log_file else get_console_handler(formatter)
     logger = getLogger("Controller")
+    if logger.hasHandlers():
+        logger.handlers.clear()
     logger.addHandler(handler)
     logger.setLevel(log_level)
     logger.propagate = False
@@ -73,6 +77,8 @@ def get_view_logger(log_level: int = INFO, log_file: Optional[str] = None) -> Lo
     formatter = plain_formatter
     handler = get_memory_file_handler(formatter, log_file) if log_file else get_console_handler(formatter)
     logger = getLogger("View")
+    if logger.hasHandlers():
+        logger.handlers.clear()
     logger.addHandler(handler)
     logger.setLevel(log_level)
     logger.propagate = False
@@ -83,6 +89,8 @@ def get_default_logger(logger_name: str) -> Logger:
     formatter = detailed_formatter
     handler = get_console_handler(formatter)
     logger = getLogger(logger_name)
+    if logger.hasHandlers():
+        return logger  # Already initialised
     logger.addHandler(handler)
     logger.setLevel(INFO)
     logger.propagate = False
