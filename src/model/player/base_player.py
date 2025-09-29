@@ -35,9 +35,15 @@ class BasePlayer(ABC):
             game_history=game_history
         )
 
-    def update_strategy(self, reward: float):
-        self.choose_card_strategy.update(reward)
-        self.choose_row_strategy.update(reward)
+    def update_strategy(
+            self,
+            reward: float,
+            board: Optional[Board] = None,
+            current_round: Optional[int] = None,
+            current_turn: Optional[int] = None
+    ) -> None:
+        self.choose_card_strategy.update(reward, self.hand, board, current_round, current_turn)
+        self.choose_row_strategy.update(reward, self.hand, board, current_round, current_turn)
 
     def choose_row(self, board: Optional[Board] = None) -> int:
         return self.choose_row_strategy.choose_row(hand=self.hand, board=board)

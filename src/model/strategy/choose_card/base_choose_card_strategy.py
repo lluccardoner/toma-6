@@ -20,6 +20,13 @@ class BaseChooseCardStrategy(ABC):
         # Hand is always sorted from low to high
         pass
 
-    def update(self, reward: float) -> None:
+    def update(
+            self,
+           reward: float,
+           hand: Optional[Hand] = None,
+           board: Optional[Board] = None,
+           current_round: Optional[int] = None,
+           current_turn: Optional[int] = None
+    ) -> None:
         # Update the strategy with the reward obtained
         return

@@ -1,0 +1,30 @@
+{
+  "game_id": "12",
+  "name": "5 min and 1 RL player",
+  "players": [
+    {
+      "name": "Min player 1",
+      "type": "min"
+    },
+    {
+      "name": "Min player 2",
+      "type": "min"
+    },
+    {
+      "name": "Min player 3",
+      "type": "min"
+    },
+    {
+      "name": "Min player 4",
+      "type": "min"
+    },
+    {
+      "name": "Min player 5",
+      "type": "min"
+    },
+    {
+      "name": "RL player 1",
+      "type": "rl"
+    }
+  ]
+}

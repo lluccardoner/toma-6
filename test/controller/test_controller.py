@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
 
+from src.model.player.player_factory import PlayerFactory
 from src.controller.controller import GameController
 from src.logger import LoggingMode
 from src.model.card import Card
@@ -19,10 +20,11 @@ class TestGameController(unittest.TestCase):
                 PlayerConfig(name='TestPlayer2', player_type=PlayerType.RANDOM)
             ]
         )
+        self.players = [PlayerFactory.create_player(player_config) for player_config in self.config.players]
 
     def test_deal_cards(self):
         # Arrange
-        controller = GameController(config=self.config, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
+        controller = GameController(players=self.players, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
 
         # Act
         controller.deal_cards()
@@ -33,7 +35,7 @@ class TestGameController(unittest.TestCase):
 
     def test_initialize_board(self):
         # Arrange
-        controller = GameController(config=self.config, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
+        controller = GameController(players=self.players, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
 
         # Act
         controller.initialize_board()
@@ -44,7 +46,7 @@ class TestGameController(unittest.TestCase):
 
     def test_choose_cards(self):
         # Arrange
-        controller = GameController(config=self.config, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
+        controller = GameController(players=self.players, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
         controller.players[0].choose_card = MagicMock(return_value=Card(10))
         controller.players[1].choose_card = MagicMock(return_value=Card(5))
         expected_chosen_cards = {"TestPlayer2": Card(5), "TestPlayer1": Card(10)}
@@ -60,7 +62,7 @@ class TestGameController(unittest.TestCase):
 
     def test_play_cards(self):
         # Arrange
-        controller = GameController(config=self.config, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
+        controller = GameController(players=self.players, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
         player_1 = MagicMock(name="MockTestPlayer1", spec=BasePlayer)
         player_2 = MagicMock(name="MockTestPlayer2", spec=BasePlayer)
         controller.players_dict = {'TestPlayer1': player_1, 'TestPlayer2': player_2}
@@ -90,7 +92,7 @@ class TestGameController(unittest.TestCase):
 
     def test_nyam_nyam_nyam(self):
         # Arrange
-        controller = GameController(config=self.config, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
+        controller = GameController(players=self.players, seed=42, logging_mode=LoggingMode.TO_CONSOLE_VERBOSE)
         player = controller.players[0]
         controller.board.rows[0] = [Card(1), Card(2), Card(3), Card(4), Card(5)]
         played_card = Card(6)

@@ -1,0 +1,18 @@
+{
+  "game_id": "8",
+  "name": "2 random and 1 RL player",
+  "players": [
+    {
+      "name": "Random player 1",
+      "type": "random"
+    },
+    {
+      "name": "Random player 2",
+      "type": "random"
+    },
+    {
+      "name": "RL player 1",
+      "type": "rl"
+    }
+  ]
+}

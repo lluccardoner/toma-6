@@ -15,6 +15,9 @@ class Board:
     def get_points_per_row(self) -> List[int]:
         return [sum(card.points for card in row) for row in self.rows]
 
+    def get_last_row_cards(self) -> List[Card]:
+        return [row[-1] for row in self.rows if row]
+
     def find_valid_row(self, card: Card) -> Optional[int]:
         # Find the valid rows where the card can be played
         valid_rows = {

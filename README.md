@@ -85,6 +85,7 @@ The output of a simulation is:
 - `violin.png`: a violin plot of the distribution of final points per game fore each player. Split between won and lost
   games. Only saved if the number of games is less than 100.
 - `is_winner.png`: a bar plot of the percentage of games won by each player in the simulation.
+- `timeline.png`: a line plot of the points of each player at the end of each game.
 
 See an example output [here](resources/example_simulation_results) after running:
 
@@ -120,6 +121,7 @@ or `BaseChooseRowStrategy` and implement the abstract methods.
 | `min`       | `MinPlayer`<br/> `MinChooseCardStrategy`<br/> `MinPointsChooseRowStrategy`    | A player that always picks the card with the lowest value in its hand. When choosing a row, choose the row with less points.                                                                           |
 | `mid`       | `MidPlayer`<br/> `MidChooseCardStrategy`<br/> `MinPointsChooseRowStrategy`    | A player that always picks the card with the mid value in its hand. When choosing a row, choose the row with less points.                                                                              |
 | `max`       | `MaxPlayer`<br/> `MaxChooseCardStrategy`<br/> `MinPointsChooseRowStrategy`    | A player that always picks the card with the highest value in its hand. When choosing a row, choose the row with less points.                                                                          |
+| `rl`        | `RLPlayer`<br/> `RLChooseCardStrategy`<br/> `MinPointsChooseRowStrategy`     | A player that learns to play with a basic Q-value reinforcement learning approach. When choosing a row, choose the row with less points.                                                               |
 
 # Test
 

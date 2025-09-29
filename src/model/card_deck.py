@@ -3,7 +3,8 @@ from typing import Optional
 
 from src.model.card import Card
 
-DECK_CARDS = [Card(i) for i in range(1, 105)]
+NUM_CARDS_IN_DECK = 104
+DECK_CARDS = [Card(i) for i in range(1, NUM_CARDS_IN_DECK + 1)]
 
 
 class CardDeck:
