@@ -132,6 +132,50 @@ class TestHand(unittest.TestCase):
         # Assert
         self.assertEqual(string, "Hand([5, 10])")
 
+    def test_min(self):
+        # Arrange
+        hand = Hand()
+        card1 = Card(value=10)
+        card2 = Card(value=5)
+        hand.add_card(card1)
+        hand.add_card(card2)
+
+        # Act
+        min_card = hand.min()
+
+        # Assert
+        self.assertEqual(min_card, card2)
+
+    def test_max(self):
+        # Arrange
+        hand = Hand()
+        card1 = Card(value=10)
+        card2 = Card(value=5)
+        hand.add_card(card1)
+        hand.add_card(card2)
+
+        # Act
+        max_card = hand.max()
+
+        # Assert
+        self.assertEqual(max_card, card1)
+
+    def test_mid(self):
+        # Arrange
+        hand = Hand()
+        card1 = Card(value=10)
+        card2 = Card(value=5)
+        card3 = Card(value=7)
+        hand.add_card(card1)
+        hand.add_card(card2)
+        hand.add_card(card3)
+
+        # Act
+        mid_card = hand.mid()
+
+        # Assert
+        self.assertEqual(mid_card, card3)
+
 
 if __name__ == '__main__':
     unittest.main()

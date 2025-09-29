@@ -10,5 +10,12 @@ class BaseChooseRowStrategy(ABC):
     def choose_row(self, hand: Optional[Hand] = None, board: Optional[Board] = None) -> int:
         pass
 
-    def update(self, reward: float) -> None:
+    def update(
+            self,
+            reward: float,
+            hand: Optional[Hand] = None,
+            board: Optional[Board] = None,
+            current_round: Optional[int] = None,
+            current_turn: Optional[int] = None
+    ) -> None:
         return

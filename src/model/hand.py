@@ -19,10 +19,28 @@ class Hand:
     def __iter__(self):
         return iter(self.cards)
 
+    def min(self):
+        if not self.cards:
+            return None
+        return min(self.cards, key=lambda card: card.value)
+
+    def max(self):
+        if not self.cards:
+            return None
+        return max(self.cards, key=lambda card: card.value)
+
+    def mid(self):
+        if not self.cards:
+            return None
+        sorted_cards = sorted(self.cards, key=lambda card: card.value)
+        mid_index = (len(sorted_cards) - 1) // 2
+        return sorted_cards[mid_index]
+
     def reset(self):
         self.cards = []
 
     def sort(self):
+        # Lowest value first
         self.cards.sort(key=lambda card: card.value)
 
     def add_card(self, card: Card):

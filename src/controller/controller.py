@@ -1,13 +1,11 @@
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 
 from src.logger import LoggingMode, get_controller_logger_by_mode
 from src.model.board import Board
 from src.model.card import Card
 from src.model.card_deck import CardDeck
-from src.model.game_config import GameConfig
 from src.model.game_history import GameHistory
 from src.model.player.base_player import BasePlayer
-from src.model.player.player_factory import PlayerFactory
 from src.view import View
 
 CARDS_PER_PLAYER = 10
@@ -17,7 +15,7 @@ MAX_PLAYERS = 10
 
 
 class GameController:
-    def __init__(self, config: GameConfig, seed: Optional[int] = None,
+    def __init__(self, players: List[BasePlayer], seed: Optional[int] = None,
                  logging_mode: Optional[LoggingMode] = LoggingMode.TO_CONSOLE_VERBOSE,
                  logger_file: Optional[str] = None):
         self.logger = get_controller_logger_by_mode(logging_mode, logger_file)
@@ -25,7 +23,7 @@ class GameController:
         # Model
         self.deck = CardDeck(seed=self.seed)
         self.board = Board()
-        self.players = [PlayerFactory.create_player(player_config, seed=self.seed) for player_config in config.players]
+        self.players = players
         self.players_dict = {player.name: player for player in self.players}
         self.num_players = len(self.players)
         assert self.num_players <= MAX_PLAYERS, f"Number of players should be maximum {MAX_PLAYERS}"
@@ -102,6 +100,7 @@ class GameController:
     def play_cards(self, game_round: int, round_turn: int, chosen_cards: dict[str, Card]):
         self.logger.info("Playing cards...")
         chosen_rows = {}
+        player_points = {}
         for player_name, chosen_card in chosen_cards.items():
             taken_row = (None, False)  # (row_index, is_full)
 
@@ -127,8 +126,14 @@ class GameController:
                 taken_row = (chosen_row, False)
 
             self.logger.info(play_str)
-            player.update_strategy(float(points_received))
+            player_points[player_name] = points_received
             chosen_rows[player_name] = taken_row
+
+        # Update the strategies after all players have played their cards
+        for player_name, player in self.players_dict.items():
+            player_points_received = player_points[player_name]
+            player.update_strategy(float(player_points_received), self.board, current_round=game_round,
+                                   current_turn=round_turn)
 
         self.game_history.add_chosen_rows(game_round, round_turn, chosen_rows)
 

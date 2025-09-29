@@ -11,6 +11,7 @@ import seaborn as sns
 from src.controller.controller import GameController
 from src.logger import get_simulation_logger, LoggingMode
 from src.model.game_config import GameConfig
+from src.model.player.player_factory import PlayerFactory
 
 LOG_GAME_SAMPLER = 100
 
@@ -38,12 +39,18 @@ class Simulation:
         self.logger.info(f"Running simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
         logger_file = os.path.join(self.output_path, "game-sample.log")
         seeds = [self.randomizer.randint(1, self.num_games * 100) for _ in range(self.num_games)]
+        # Players are the same throughout the simulation
+        players = [
+            PlayerFactory.create_player(player_config, seed=self.seed)
+            for player_config
+            in self.game_config.players
+        ]
         for game_number, game_seed in enumerate(seeds):
             logging_mode = LoggingMode.TO_FILE_SILENT
             if game_number == 0 or game_number % LOG_GAME_SAMPLER == 0:
                 self.logger.info(f"Running simulation {game_number} of {self.num_games}")
                 logging_mode = LoggingMode.TO_FILE_VERBOSE  # Only log a sample of games
-            game = GameController(self.game_config, seed=game_seed, logging_mode=logging_mode, logger_file=logger_file)
+            game = GameController(players, seed=game_seed, logging_mode=logging_mode, logger_file=logger_file)
             winner = game.play()
 
             game_results = pd.DataFrame(
@@ -101,6 +108,7 @@ class Simulation:
             self.plot_swarm(title)
         self.plot_violin(title)
         self.plot_box(title)
+        self.plot_timeline(title)
 
     def plot_is_winner(self, title):
         fig = plt.figure(figsize=(12, 6))
@@ -179,4 +187,32 @@ class Simulation:
         plt.grid(True, linestyle="--", alpha=0.5)
 
         plt.savefig(os.path.join(self.output_path, "box.png"), dpi=300, bbox_inches="tight")
+        plt.close(fig)
+
+    def plot_timeline(self, title):
+        fig = plt.figure(figsize=(12, 6))
+        window = 20 if self.num_games >= 20 else 1
+        ma_df = (
+            self.results
+            .sort_values(["player_name", "game_number"])
+            .groupby("player_name", group_keys=False)
+            .apply(lambda g: g.assign(total_points_ma=g["total_points"].rolling(window=window, min_periods=1).mean()))
+        )
+
+        sns.lineplot(
+            data=ma_df,
+            x="game_number",
+            y="total_points_ma",
+            hue="player_name",
+            marker="o"
+        )
+
+        plt.title(title)
+        plt.xlabel("Game Number")
+        plt.ylabel("Total Points (20-game MA)")
+        plt.xticks(rotation=45)
+        plt.legend(title="Player Name", loc="upper right")
+        plt.grid(True, linestyle="--", alpha=0.5)
+
+        plt.savefig(os.path.join(self.output_path, "timeline.png"), dpi=300, bbox_inches="tight")
         plt.close(fig)
