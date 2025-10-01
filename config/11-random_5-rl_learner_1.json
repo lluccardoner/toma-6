@@ -1,6 +1,6 @@
 {
   "game_id": "11",
-  "name": "5 random and 1 RL player",
+  "name": "5 random and 1 RL player learner",
   "players": [
     {
       "name": "Random player 1",
@@ -23,8 +23,8 @@
       "type": "random"
     },
     {
-      "name": "RL player 1",
-      "type": "rl"
+      "name": "RL player 1 - learner",
+      "type": "rl_learner"
     }
   ]
 }

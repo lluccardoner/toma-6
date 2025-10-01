@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from src.model.board import Board
 from src.model.card import Card
@@ -13,12 +13,18 @@ ALL_STATES = State.get_all_states()
 ALL_ACTIONS = Action.get_all_actions()
 
 
-class RLChooseCardStrategy(BaseChooseCardStrategy):
-    def __init__(self, epsilon: float = 0.1, alpha: float = 0.1, gamma: float = 0.9):
+class RLChooseCardStrategyLearner(BaseChooseCardStrategy):
+    def __init__(
+            self,
+            Q: Optional[Dict[Any, Dict[Any, float]]] = None,
+            epsilon: float = 0.1,
+            alpha: float = 0.1,
+            gamma: float = 0.9
+    ):
         self.epsilon = epsilon
         self.alpha = alpha
         self.gamma = gamma
-        self.Q = init_Q(ALL_STATES, ALL_ACTIONS)
+        self.Q = Q or init_Q(ALL_STATES, ALL_ACTIONS)
         self.last_state = None
         self.last_action = None
 

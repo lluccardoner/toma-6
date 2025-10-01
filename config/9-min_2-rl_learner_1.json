@@ -1,6 +1,6 @@
 {
   "game_id": "9",
-  "name": "2 min and 1 RL player",
+  "name": "2 min and 1 RL player learner",
   "players": [
     {
       "name": "Min player 1",
@@ -11,8 +11,8 @@
       "type": "min"
     },
     {
-      "name": "RL player 1",
-      "type": "rl"
+      "name": "RL player 1 - learner",
+      "type": "rl_learner"
     }
   ]
 }
