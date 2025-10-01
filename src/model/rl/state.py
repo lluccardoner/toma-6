@@ -3,19 +3,22 @@ from typing import Tuple, List
 
 from src.model.board import Board
 from src.model.hand import Hand
+from itertools import combinations_with_replacement
 
 
 class State:
 
     @classmethod
     def get_all_states(cls) -> List[Tuple]:
-        states = []
+        # states = []
+        #
+        # top_card_range = range(11)
+        #
+        # for top_cards in product(top_card_range, repeat=4):  # 4 rows
+        #     state = top_cards
+        #     states.append(state)
 
-        top_card_range = range(11)
-
-        for top_cards in product(top_card_range, repeat=4):  # 4 rows
-            state = top_cards
-            states.append(state)
+        states = list(combinations_with_replacement(range(11), 4))  # 1001 tuples
 
         return states
 
@@ -30,7 +33,7 @@ class State:
         last_row_cards = board.get_last_row_cards()
         # 11 buckets for card values: 0-9, 10-19, ..., 90-99, 100+
         last_row_cards_buckets = [card.value // 10 for card in last_row_cards]
-        return tuple(last_row_cards_buckets)
+        return tuple(sorted(last_row_cards_buckets))
 
     @classmethod
     def get_row_lengths(cls, board: Board) -> Tuple[int, int, int, int]:
