@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 from src.model.player.base_player import BasePlayer
 from src.model.strategy.choose_card.rl_choose_card_strategy import RLChooseCardStrategyLearner
 from src.model.strategy.choose_row.min_points_choose_row_strategy import MinPointsChooseRowStrategy
@@ -10,3 +12,6 @@ class RLPlayerLearner(BasePlayer):
             choose_card_strategy=RLChooseCardStrategyLearner(),
             choose_row_strategy=MinPointsChooseRowStrategy()
         )
+
+    def get_Q(self) -> Dict[Any, Dict[Any, float]]:
+        return self.choose_card_strategy.Q

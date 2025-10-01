@@ -1,8 +1,11 @@
+import json
+import os
 from typing import Any, Dict, List, Tuple
 
 import numpy as np
 
 generator = np.random.default_rng(42)
+
 
 def init_Q(states: List[Any], actions: List[Any]) -> Dict[Any, Dict[Any, float]]:
     # Initialize Q(s,a)
@@ -26,3 +29,12 @@ def epsilon_greedy(Q: Dict[Any, Dict[Any, float]], s: Any, eps: float, all_actio
         return generator.choice(all_actions)
     else:
         return max_dict(Q[s])[0]
+
+
+def save_Q_to_file(Q: Dict[Any, Dict[Any, float]], path: str, player_name: str) -> str:
+    output_file = os.path.join(path, f"Q_{player_name}.json")
+    output_file_sanitized = output_file.replace(" ", "_")
+    Q_sanitized = {str(s): {str(a): v for a, v in a_dict.items()} for s, a_dict in Q.items()}
+    with open(output_file_sanitized, "w", encoding="utf-8") as f:
+        json.dump(Q_sanitized, f)
+    return output_file_sanitized
