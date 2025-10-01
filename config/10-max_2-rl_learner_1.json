@@ -1,6 +1,6 @@
 {
   "game_id": "10",
-  "name": "2 max and 1 RL player",
+  "name": "2 max and 1 RL player learner",
   "players": [
     {
       "name": "Max player 1",
@@ -11,8 +11,8 @@
       "type": "max"
     },
     {
-      "name": "RL player 1",
-      "type": "rl"
+      "name": "RL player 1 - learner",
+      "type": "rl_learner"
     }
   ]
 }

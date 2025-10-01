@@ -17,7 +17,7 @@ class PlayerType(StrEnum):
     MID = auto()
     MAX = auto()
     INPUT = auto()
-    RL = auto()
+    RL_LEARNER = auto()
 
 
 @dataclass

@@ -87,7 +87,7 @@ The results show that there is no improvements compared to the previous results.
 #### What have they learned?
 TODO
 - save/load Q
-- plot Q
+- plot Q?
 
 ### Evaluation
 TODO
