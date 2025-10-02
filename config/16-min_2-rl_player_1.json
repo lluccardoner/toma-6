@@ -1,0 +1,21 @@
+{
+  "game_id": "16",
+  "name": "2 min and 1 RL player",
+  "players": [
+    {
+      "name": "Min player 1",
+      "type": "min"
+    },
+    {
+      "name": "Min player 2",
+      "type": "min"
+    },
+    {
+      "name": "RL player 1 - player",
+      "type": "rl_player",
+      "rl_config": {
+        "q_path": "resources/reinforcement_learning/experiment_1/evaluation/Q_RL_learner_from_game_id_10.json"
+      }
+    }
+  ]
+}

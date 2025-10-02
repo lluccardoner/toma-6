@@ -1,6 +1,6 @@
 # Reinforcement Learning Experiments
 
-This document outlines various experiments conducted in the field of reinforcement learning (RL). 
+This document outlines various experiments conducted in the field of reinforcement learning (RL).
 The goal is to train players using RL techniques and evaluate their performance against different types of opponents.
 
 Note that in this game, you depend also on the number of players and the other players' strategy.
@@ -16,7 +16,7 @@ Q-learning will be employed as the RL algorithm.
 To represent the state of the game, only the top card of each row will be considered (order matters).
 
 The vector encoding are 4 dimensions, one for each row.
-Each dimension can take a value from 0 to 11. 
+Each dimension can take a value from 0 to 11.
 These represent the different buckets a card can be in.
 
 For example, the board with top cards [12, 34, 56, 78] will be encoded as [1, 3, 5, 7].
@@ -31,7 +31,7 @@ They represent the choice of playing the lowest, the middle, or highest card fro
 ### Reward
 
 For the reward, the negative of the points obtained in the turn will be used.
-If no points are obtained, the reward is set to 1 to encourage it when taking the max action of Q. 
+If no points are obtained, the reward is set to 1 to encourage it when taking the max action of Q.
 
 ### Training
 
@@ -41,7 +41,7 @@ TL;DR: There is some learning in some cases. It is a good starting point.
 
 The initial results of the experiment show that the RL player is able to learn a basic strategy.
 
-When the RL player is trained against RANDOM players, 
+When the RL player is trained against RANDOM players,
 we can see a small learning curve and the player is able to win games at the end with 30-35 points.
 This is a good starting point.
 
@@ -57,11 +57,11 @@ When the RL player is trained against MAX players, it is able to learn a better 
 
 #### Tests with more players
 
-TL;DR: The RL player is performing worst when playing with more players. 
+TL;DR: The RL player is performing worst when playing with more players.
 This could be due to the fact that the state representation does not encode the lengths of the rows
 or the points in each row.
 
-Let's see how the RL player performs with more players in the game. 
+Let's see how the RL player performs with more players in the game.
 When there are more players, the rows are filled faster in a single turn.
 
 Against 5 RANDOM players, it can be seen that the RL player is not able to learn, and it performs very bad.
@@ -84,15 +84,21 @@ the reward was set to -1 if the player took a row and 1 otherwise.
 
 The results show that there is no improvements compared to the previous results.
 
-#### What have they learned?
-TODO
-- save/load Q
-- plot Q?
-
 ### Evaluation
-TODO
-- against same environment
-- new environment
+
+The learned Q-table was used to evaluate the RL player against different opponents.
+The Q-table that was used for evaluation was the one obtained after training against 2 MAX players.
+
+The results look as expected, the player is able to perform as well as the final of the training.
+
+Against 2 MAX players it wins 95% of the games:
+![timeline_1.png](experiment_1/evaluation/timeline_1.png)
+
+Against 2 RANDOM players it wins around 75% of the games:
+![timeline_3.png](experiment_1/evaluation/timeline_3.png)
+
+Against 2 MIN players it wins around 55% of the games:
+![timeline_2.png](experiment_1/evaluation/timeline_2.png)
 
 ## Experiment 2
 
@@ -101,6 +107,7 @@ Does simplifying the state help compared to experiment 1?
 ### State
 
 sorted top card
+
 - TODO new player? refactor state and action to be inside the player?
 
 ### Action

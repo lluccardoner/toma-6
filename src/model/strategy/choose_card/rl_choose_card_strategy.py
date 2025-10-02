@@ -5,7 +5,7 @@ from src.model.card import Card
 from src.model.game_history import GameHistory
 from src.model.hand import Hand
 from src.model.rl.action import Action
-from src.model.rl.rl_utils import init_Q, epsilon_greedy, max_dict
+from src.model.rl.rl_utils import init_Q, epsilon_greedy, max_dict, QValueType
 from src.model.rl.state import State
 from src.model.strategy.choose_card.base_choose_card_strategy import BaseChooseCardStrategy
 
@@ -16,7 +16,7 @@ ALL_ACTIONS = Action.get_all_actions()
 class RLChooseCardStrategyLearner(BaseChooseCardStrategy):
     def __init__(
             self,
-            Q: Optional[Dict[Any, Dict[Any, float]]] = None,
+            Q: Optional[QValueType] = None,
             epsilon: float = 0.1,
             alpha: float = 0.1,
             gamma: float = 0.9
@@ -61,3 +61,22 @@ class RLChooseCardStrategyLearner(BaseChooseCardStrategy):
         s2 = State.create(board)
         maxQ = max_dict(self.Q[s2])[1]
         self.Q[s][a] = self.Q[s][a] + self.alpha * (r + self.gamma * maxQ - self.Q[s][a])
+
+
+class RLChooseCardStrategy(BaseChooseCardStrategy):
+    def __init__(self, Q: QValueType):
+        self.Q = Q
+
+    def choose_card(
+            self,
+            hand: Hand,
+            board: Optional[Board] = None,
+            current_round: Optional[int] = None,
+            current_turn: Optional[int] = None,
+            game_history: Optional[GameHistory] = None
+    ) -> Card:
+        # Perform an action based on the current state
+        s = State.create(board)
+        a = max_dict(self.Q[s])[0]
+        card = Action.to_card(a, hand)
+        return card
