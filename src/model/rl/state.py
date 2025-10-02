@@ -4,11 +4,12 @@ from typing import Tuple, List
 from src.model.board import Board
 from src.model.hand import Hand
 
+StateType = Tuple[int, int, int, int]
 
 class State:
 
     @classmethod
-    def get_all_states(cls) -> List[Tuple]:
+    def get_all_states(cls) -> List[StateType]:
         states = []
 
         top_card_range = range(11)
@@ -20,7 +21,7 @@ class State:
         return states
 
     @classmethod
-    def create(cls, board: Board):
+    def create(cls, board: Board) -> StateType:
         # For now, we only use the top card buckets to represent the state of the game
         top_card_buckets = cls.get_top_card_buckets(board)
         return top_card_buckets

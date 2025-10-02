@@ -2,7 +2,7 @@ import json
 import os
 from dataclasses import dataclass
 from enum import StrEnum, auto
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from src.logger import get_default_logger
 
@@ -18,12 +18,34 @@ class PlayerType(StrEnum):
     MAX = auto()
     INPUT = auto()
     RL_LEARNER = auto()
+    RL_PLAYER = auto()
+
+
+@dataclass
+class RLConfig:
+    q_path: str
+
+    @staticmethod
+    def from_dict(config_dict: Dict) -> "RLConfig":
+        return RLConfig(q_path=config_dict["q_path"])
 
 
 @dataclass
 class PlayerConfig:
     name: str
     player_type: PlayerType
+    rl_config: Optional[RLConfig] = None
+
+    @staticmethod
+    def from_dict(config_dict: Dict) -> "PlayerConfig":
+        rl_config = None
+        if rl_config_dict := config_dict.get("rl_config"):
+            rl_config = RLConfig.from_dict(rl_config_dict)
+        return PlayerConfig(
+            name=config_dict["name"],
+            player_type=PlayerType(config_dict["type"]),
+            rl_config=rl_config
+        )
 
 
 @dataclass
@@ -38,10 +60,7 @@ class GameConfig:
             game_id=config_dict["game_id"],
             name=config_dict["name"],
             players=[
-                PlayerConfig(
-                    name=player["name"],
-                    player_type=PlayerType(player["type"]),
-                )
+                PlayerConfig.from_dict(player)
                 for player in config_dict["players"]
             ],
         )
