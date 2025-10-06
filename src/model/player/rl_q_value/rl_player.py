@@ -1,4 +1,4 @@
-from src.model.rl.rl_utils import QValueType
+from src.model.player.rl_q_value.rl_utils import QValueType
 from src.model.player.base_player import BasePlayer
 from src.model.strategy.choose_card.rl_choose_card_strategy import RLChooseCardStrategyLearner, RLChooseCardStrategy
 from src.model.strategy.choose_row.min_points_choose_row_strategy import MinPointsChooseRowStrategy

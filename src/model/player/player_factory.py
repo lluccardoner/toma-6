@@ -5,8 +5,8 @@ from src.model.player.base_player import BasePlayer
 from src.model.player.input_player import InputPlayer
 from src.model.player.level_player import MinPlayer, MidPlayer, MaxPlayer
 from src.model.player.random_player import RandomPlayer
-from src.model.player.rl_player import RLPlayerLearner, RLPlayer
-from src.model.rl.rl_utils import load_Q_from_file
+from src.model.player.rl_q_value.rl_player import RLPlayerLearner, RLPlayer
+from src.model.player.rl_q_value.rl_utils import load_Q_from_file
 
 
 class PlayerFactory:

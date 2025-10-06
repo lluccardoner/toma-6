@@ -1,12 +1,12 @@
-from typing import Optional, Dict, Any
+from typing import Optional
 
 from src.model.board import Board
 from src.model.card import Card
 from src.model.game_history import GameHistory
 from src.model.hand import Hand
-from src.model.rl.action import Action
-from src.model.rl.rl_utils import init_Q, epsilon_greedy, max_dict, QValueType
-from src.model.rl.state import State
+from src.model.player.rl_q_value.action import Action
+from src.model.player.rl_q_value.rl_utils import init_Q, epsilon_greedy, max_dict, QValueType
+from src.model.player.rl_q_value.state import State
 from src.model.strategy.choose_card.base_choose_card_strategy import BaseChooseCardStrategy
 
 ALL_STATES = State.get_all_states()

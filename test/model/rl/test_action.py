@@ -1,7 +1,7 @@
 # Updated to use unittest style consistent with other tests
 import unittest
 
-from src.model.rl.action import Action
+from src.model.player.rl_q_value.action import Action
 from src.model.hand import Hand
 from src.model.card import Card
 

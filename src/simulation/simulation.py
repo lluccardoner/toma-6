@@ -12,8 +12,8 @@ from src.controller.controller import GameController
 from src.logger import get_simulation_logger, LoggingMode
 from src.model.game_config import GameConfig
 from src.model.player.player_factory import PlayerFactory
-from src.model.player.rl_player import RLPlayerLearner
-from src.model.rl.rl_utils import save_Q_to_file
+from src.model.player.rl_q_value.rl_player import RLPlayerLearner
+from src.model.player.rl_q_value.rl_utils import save_Q_to_file
 
 LOG_GAME_SAMPLER = 100
 

@@ -1,11 +1,11 @@
 import json
 import os
-from typing import Any, Dict, List, Tuple
+from typing import Dict, List, Tuple
 
 import numpy as np
 
-from src.model.rl.action import ActionType
-from src.model.rl.state import StateType
+from src.model.player.rl_q_value.action import ActionType
+from src.model.player.rl_q_value.state import StateType
 
 generator = np.random.default_rng(42)
 
