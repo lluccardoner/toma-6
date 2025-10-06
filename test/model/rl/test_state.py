@@ -3,7 +3,7 @@ import unittest
 from src.model.card import Card
 from src.model.hand import Hand
 from src.model.board import Board
-from src.model.rl.state import State
+from src.model.player.rl_q_value.state import State
 
 
 class TestState(unittest.TestCase):
