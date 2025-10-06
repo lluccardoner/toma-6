@@ -13,7 +13,7 @@ ALL_STATES = State.get_all_states()
 ALL_ACTIONS = Action.get_all_actions()
 
 
-class RLChooseCardStrategyLearner(BaseChooseCardStrategy):
+class RLQValueChooseCardStrategyLearner(BaseChooseCardStrategy):
     def __init__(
             self,
             Q: Optional[QValueType] = None,
@@ -63,7 +63,7 @@ class RLChooseCardStrategyLearner(BaseChooseCardStrategy):
         self.Q[s][a] = self.Q[s][a] + self.alpha * (r + self.gamma * maxQ - self.Q[s][a])
 
 
-class RLChooseCardStrategy(BaseChooseCardStrategy):
+class RLQValueChooseCardStrategy(BaseChooseCardStrategy):
     def __init__(self, Q: QValueType):
         self.Q = Q
 
