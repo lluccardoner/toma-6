@@ -8,11 +8,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+from src.model.player.rl_q_value.rl_q_value_player import RLQValuePlayerLearner
 from src.controller.controller import GameController
 from src.logger import get_simulation_logger, LoggingMode
 from src.model.game_config import GameConfig
 from src.model.player.player_factory import PlayerFactory
-from src.model.player.rl_q_value.rl_player import RLPlayerLearner
 from src.model.player.rl_q_value.rl_utils import save_Q_to_file
 
 LOG_GAME_SAMPLER = 100
@@ -88,7 +88,7 @@ class Simulation:
         self.save_results()
         self.plot_results()
         for player in players:
-            if isinstance(player, RLPlayerLearner):
+            if isinstance(player, RLQValuePlayerLearner):
                 output_file = save_Q_to_file(player.get_Q(), self.output_path, player.name)
                 self.logger.info(f"Saved Q-table for player {player.name} to {output_file}")
         self.logger.info(f"Finished simulation id={self.simulation_id} for game_id={self.game_config.game_id}")

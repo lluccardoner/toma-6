@@ -5,7 +5,7 @@ from src.model.player.base_player import BasePlayer
 from src.model.player.input_player import InputPlayer
 from src.model.player.level_player import MinPlayer, MidPlayer, MaxPlayer
 from src.model.player.random_player import RandomPlayer
-from src.model.player.rl_q_value.rl_player import RLPlayerLearner, RLPlayer
+from src.model.player.rl_q_value.rl_q_value_player import RLQValuePlayerLearner, RLQValuePlayer
 from src.model.player.rl_q_value.rl_utils import load_Q_from_file
 
 
@@ -19,8 +19,8 @@ class PlayerFactory:
             PlayerType.MID: lambda: MidPlayer(player_config.name),
             PlayerType.MAX: lambda: MaxPlayer(player_config.name),
             PlayerType.INPUT: lambda: InputPlayer(player_config.name),
-            PlayerType.RL_LEARNER: lambda: RLPlayerLearner(player_config.name),
-            PlayerType.RL_PLAYER: lambda: PlayerFactory.load_rl_player(player_config),
+            PlayerType.RL_LEARNER: lambda: RLQValuePlayerLearner(player_config.name),
+            PlayerType.RL_PLAYER: lambda: PlayerFactory.load_rl_q_value_player(player_config),
         }
         player_type = player_config.player_type
         if player_type not in player_factories:
@@ -29,7 +29,7 @@ class PlayerFactory:
         return player_factories[player_type]()
 
     @staticmethod
-    def load_rl_player(player_config: PlayerConfig) -> RLPlayer:
+    def load_rl_q_value_player(player_config: PlayerConfig) -> RLQValuePlayer:
         q_file_path = player_config.rl_config.q_path
         Q = load_Q_from_file(q_file_path)
-        return RLPlayer(player_config.name, Q=Q)
+        return RLQValuePlayer(player_config.name, Q=Q)
