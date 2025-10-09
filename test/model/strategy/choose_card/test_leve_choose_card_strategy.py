@@ -2,8 +2,12 @@ import unittest
 
 from src.model.card import Card
 from src.model.hand import Hand
-from src.model.strategy.choose_card.level_choose_card_strategy import LevelChooseCardStrategy, MinChooseCardStrategy, \
-    MidChooseCardStrategy, MaxChooseCardStrategy
+from src.model.strategy.choose_card.level_choose_card_strategy import (
+    LevelChooseCardStrategy,
+    MinChooseCardStrategy,
+    MidChooseCardStrategy,
+    MaxChooseCardStrategy
+)
 
 
 class TestLevelChooseCardStrategy(unittest.TestCase):
