@@ -102,50 +102,17 @@ Against 2 MIN players it wins around 55% of the games:
 
 ## Experiment 2
 
-Does simplifying the state help compared to experiment 1?
+Evolution strategies
 
 ### State
 
-sorted top card
-
-- TODO new player? refactor state and action to be inside the player?
-
 ### Action
-
-low, medium, high
 
 ### Reward
 
 ### Training
 
-- plot Q
-- different number of players
+- Train against different type of opponents (RANDOM, MIN, MAX, a mix of the 3)
+- Train with different number of players (3, 5)
 
 ### Evaluation
-
-- against same environment
-- new environment
-
-## Experiment 3
-
-Add more control to the action?
-
-### State
-
-top card (not sorted)
-
-### Action
-
-low, medium, high + row
-
-### Reward
-
-### Training
-
-- plot Q
-- different number of players
-
-### Evaluation
-
-- against same environment
-- new environment
