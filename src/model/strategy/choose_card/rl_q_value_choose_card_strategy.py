@@ -79,4 +79,4 @@ class RLQValueChooseCardStrategy(BaseChooseCardStrategy):
         s = State.create(board)
         a = max_dict(self.Q[s])[0]
         card = Action.to_card(a, hand)
-        return card
+        return hand.pop_card_by_value(card.value)

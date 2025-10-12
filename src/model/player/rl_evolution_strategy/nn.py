@@ -46,6 +46,26 @@ class ANN:
         p = P[0]  # the first row
         return p
 
+    def mutate(self, mutation: np.ndarray) -> "ANN":
+        current_params = self.get_params()
+        params_try = current_params + mutation
+        mutated_nn = ANN(self.input_size, self.hidden_size, self.output_size)
+        mutated_nn.set_params(params_try)
+        return mutated_nn
+
+    def update(self, update: np.ndarray) -> None:
+        current_params = self.get_params()
+        new_params = current_params + update
+        self.set_params(new_params)
+
+    def copy(self) -> "ANN":
+        nn_copy = ANN(self.input_size, self.hidden_size, self.output_size)
+        nn_copy.W1 = np.copy(self.W1)
+        nn_copy.b1 = np.copy(self.b1)
+        nn_copy.W2 = np.copy(self.W2)
+        nn_copy.b2 = np.copy(self.b2)
+        return nn_copy
+
     def get_params(self):
         # return a flat array of parameters
         return np.concatenate([self.W1.flatten(), self.b1, self.W2.flatten(), self.b2])

@@ -11,17 +11,29 @@ class LevelPlayer(BasePlayer):
             choose_row_strategy=MinPointsChooseRowStrategy()
         )
 
+    def copy(self) -> "LevelPlayer":
+        return LevelPlayer(name=self.name, level=self.choose_card_strategy.level)
+
 
 class MinPlayer(LevelPlayer):
     def __init__(self, name: str):
         super().__init__(name, level=0)
+
+    def copy(self) -> "MinPlayer":
+        return MinPlayer(name=self.name)
 
 
 class MidPlayer(LevelPlayer):
     def __init__(self, name: str):
         super().__init__(name, level=0.5)
 
+    def copy(self) -> "MidPlayer":
+        return MidPlayer(name=self.name)
+
 
 class MaxPlayer(LevelPlayer):
     def __init__(self, name: str):
         super().__init__(name, level=1)
+
+    def copy(self) -> "MaxPlayer":
+        return MaxPlayer(name=self.name)

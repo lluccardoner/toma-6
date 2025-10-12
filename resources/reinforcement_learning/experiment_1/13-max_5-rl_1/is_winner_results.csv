@@ -1,7 +1,7 @@
 player_name,total_games_won,pct_games_won
-Max player 1,226,0.226
-Max player 5,208,0.208
-Max player 3,191,0.191
-Max player 2,187,0.187
-Max player 4,180,0.18
-RL player 1,8,0.008
+Max player 1,205,0.205
+Max player 5,203,0.203
+Max player 4,197,0.197
+Max player 2,196,0.196
+Max player 3,189,0.189
+RL player 1 - learner,10,0.01

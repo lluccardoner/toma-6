@@ -33,4 +33,5 @@ class RLEvolutionStrategyChooseCardStrategy(BaseChooseCardStrategy):
         s = State.create(board, hand)
         a = self.policy_nn.sample_action(s)
         card = Action.to_card(a, hand)
-        return card
+        return hand.pop_card_by_value(card.value)
+

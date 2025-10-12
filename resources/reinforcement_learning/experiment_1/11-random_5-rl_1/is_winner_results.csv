@@ -1,7 +1,7 @@
 player_name,total_games_won,pct_games_won
-Random player 1,206,0.206
-Random player 3,197,0.197
-Random player 4,189,0.189
-Random player 2,183,0.183
-Random player 5,181,0.181
-RL player 1,44,0.044
+Random player 2,211,0.211
+Random player 1,199,0.199
+Random player 5,196,0.196
+Random player 3,188,0.188
+Random player 4,173,0.173
+RL player 1 - learner,33,0.033

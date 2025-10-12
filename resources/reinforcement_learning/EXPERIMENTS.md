@@ -91,7 +91,7 @@ The Q-table that was used for evaluation was the one obtained after training aga
 
 The results look as expected, the player is able to perform as well as the final of the training.
 
-Against 2 MAX players it wins 95% of the games:
+Against 2 MAX players it wins 40% of the games (something is wrong here):
 ![timeline_1.png](experiment_1/evaluation/timeline_1.png)
 
 Against 2 RANDOM players it wins around 75% of the games:
@@ -102,17 +102,53 @@ Against 2 MIN players it wins around 55% of the games:
 
 ## Experiment 2
 
-Evolution strategies
+In this experiment, evolution strategies (ES) will be used to train the RL player.
+At each iteration, a population of players will be created
+by adding Gaussian noise to the weights of the best player from the previous iteration.
+
+The RL ES player has as policy a neural network with 1 hidden layer of 100 neurons.
+
+The evolution strategy hyperparameters used are:
+
+- Population size
+- Noise standard deviation (sigma)
+- Learning rate (lr) and learning rate decay
 
 ### State
 
+The state representation is a vector of 23 dimensions.
+
+- The first 12 dimensions represent the board (last cards, row lengths and row points).
+- The next 11 dimensions represent the player's hand (in buckets).
+
 ### Action
+
+The action space is still represented by 3 actions: low, medium, and high.
 
 ### Reward
 
+The reward for each population is the same as in Experiment 1,
+but instead of each turn, it is computed at the end of each game.
+
+- The negative of the points obtained in the turn.
+- If the game was won by the player, a small reward is added to encourage winning.
+
 ### Training
 
-- Train against different type of opponents (RANDOM, MIN, MAX, a mix of the 3)
-- Train with different number of players (3, 5)
+The hyperparameters used for training are:
+
+- Population size: 100
+- Noise standard deviation (sigma): 0.1
+- Learning rate (lr): 0.03
+- Learning rate decay: 0.992354
+
+Against 2 RANDOM players:
+![timeline.png](experiment_2/17-min_2-rl_es_learner_1/timeline.png)
+
+Against 2 MAX players:
+![timeline.png](experiment_2/18-max_2-rl_es_learner_1/timeline.png)
+
+Against 2 MIN players:
+![timeline.png](experiment_2/19-ranodm_2-rl_es_learner_1/timeline.png)
 
 ### Evaluation

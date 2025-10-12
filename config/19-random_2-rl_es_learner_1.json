@@ -1,0 +1,18 @@
+{
+  "game_id": "19",
+  "name": "2 ranodm and 1 RL evolution strategy player",
+  "players": [
+    {
+      "name": "Random player 1",
+      "type": "random"
+    },
+    {
+      "name": "Random player 2",
+      "type": "random"
+    },
+    {
+      "name": "RL ES player 1 - learner",
+      "type": "rl_es_learner"
+    }
+  ]
+}

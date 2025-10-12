@@ -10,3 +10,6 @@ class InputPlayer(BasePlayer):
             choose_card_strategy=InputChooseCardStrategy(),
             choose_row_strategy=InputChooseRowStrategy()
         )
+
+    def copy(self) -> "InputPlayer":
+        return InputPlayer(name=self.name)

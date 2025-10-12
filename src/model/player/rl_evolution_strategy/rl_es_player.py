@@ -19,24 +19,22 @@ class RLEvolutionStrategyPlayer(BasePlayer):
             choose_row_strategy=MinPointsChooseRowStrategy()
         )
 
-    def get_policy_nn(self) -> ANN:
+    @property
+    def policy_nn(self) -> ANN:
         return self.choose_card_strategy.policy_nn
 
     def mutate(self, mutation: np.ndarray) -> "RLEvolutionStrategyPlayer":
-        current_params = self.get_policy_nn().get_params()
-        params_try = current_params + mutation
-        mutated_player = RLEvolutionStrategyPlayer(self.name)
-        mutated_player.get_policy_nn().set_params(params_try)
+        mutated_policy_nn = self.policy_nn.mutate(mutation)
+        # Return a new player with the mutated policy instead of modifying in place
+        mutated_player = RLEvolutionStrategyPlayer(self.name, mutated_policy_nn)
         return mutated_player
 
     def update(self, update: np.ndarray) -> None:
-        current_params = self.get_policy_nn().get_params()
-        new_params = current_params + update
-        self.get_policy_nn().set_params(new_params)
+        self.policy_nn.update(update)
 
-    def save_policy(self, output_path):
+    def save_policy(self, output_path: str) -> None:
         output_file = os.path.join(output_path, f"nn_{self.name}.npz")
-        nn = self.get_policy_nn()
+        nn = self.policy_nn
         nn.save(output_file)
 
     @classmethod
@@ -44,3 +42,6 @@ class RLEvolutionStrategyPlayer(BasePlayer):
         nn = ANN.load(file_path)
         player = cls(name=player_name, policy_nn=nn)
         return player
+
+    def copy(self) -> "RLEvolutionStrategyPlayer":
+        return RLEvolutionStrategyPlayer(self.name, self.policy_nn.copy())
