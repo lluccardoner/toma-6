@@ -12,3 +12,7 @@ class RandomPlayer(BasePlayer):
             choose_card_strategy=RandomChooseCardStrategy(seed),
             choose_row_strategy=RandomChooseRowStrategy(seed)
         )
+        self.seed = seed
+
+    def copy(self) -> "RandomPlayer":
+        return RandomPlayer(name=self.name, seed=self.seed)

@@ -18,6 +18,9 @@ class RLQValuePlayerLearner(BasePlayer):
     def get_Q(self) -> QValueType:
         return self.choose_card_strategy.Q
 
+    def copy(self) -> "RLQValuePlayerLearner":
+        return RLQValuePlayerLearner(self.name, self.get_Q().copy())
+
 
 class RLQValuePlayer(BasePlayer):
     def __init__(self, name: str, Q: QValueType):
@@ -26,3 +29,9 @@ class RLQValuePlayer(BasePlayer):
             choose_card_strategy=RLQValueChooseCardStrategy(Q),
             choose_row_strategy=MinPointsChooseRowStrategy()
         )
+
+    def get_Q(self) -> QValueType:
+        return self.choose_card_strategy.Q
+
+    def copy(self) -> "RLQValuePlayer":
+        return RLQValuePlayer(self.name, self.get_Q().copy())

@@ -1,18 +1,20 @@
 import os
 import uuid
 from datetime import datetime
-from random import Random
-from typing import Optional
+from typing import Optional, List
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
 
-from src.model.player.rl_q_value.rl_q_value_player import RLQValuePlayerLearner
 from src.controller.controller import GameController
 from src.logger import get_simulation_logger, LoggingMode
 from src.model.game_config import GameConfig
+from src.model.player.base_player import BasePlayer
 from src.model.player.player_factory import PlayerFactory
+from src.model.player.rl_evolution_strategy.rl_es_player import RLEvolutionStrategyPlayer
+from src.model.player.rl_q_value.rl_q_value_player import RLQValuePlayerLearner
 from src.model.player.rl_q_value.rl_utils import save_Q_to_file
 
 LOG_GAME_SAMPLER = 100
@@ -24,7 +26,7 @@ class Simulation:
     def __init__(self, game_config: GameConfig, num_games: int = 100, seed: Optional[int] = None):
         self.logger = get_simulation_logger()
         self.seed = seed
-        self.randomizer = Random(seed)
+        self.randomizer = np.random.default_rng(seed)
         self.simulation_id = str(uuid.uuid4())
         self.date_time = datetime.now()
 
@@ -39,59 +41,85 @@ class Simulation:
 
     def run(self):
         self.logger.info(f"Running simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
-        logger_file = os.path.join(self.output_path, "game-sample.log")
-        seeds = [self.randomizer.randint(1, self.num_games * 100) for _ in range(self.num_games)]
-        # Players are the same throughout the simulation
-        players = [
-            PlayerFactory.create_player(player_config, seed=self.seed)
-            for player_config
-            in self.game_config.players
-        ]
+        logger_file = self.get_logger_file()
+        seeds = self.get_game_seeds()
+        players = self.get_players()  # Players are the same throughout the simulation
         for game_number, game_seed in enumerate(seeds):
-            logging_mode = LoggingMode.TO_FILE_SILENT
-            if game_number == 0 or game_number % LOG_GAME_SAMPLER == 0:
-                self.logger.info(f"Running simulation {game_number} of {self.num_games}")
-                logging_mode = LoggingMode.TO_FILE_VERBOSE  # Only log a sample of games
-            game = GameController(players, seed=game_seed, logging_mode=logging_mode, logger_file=logger_file)
-            winner = game.play()
-
-            game_results = pd.DataFrame(
-                [
-                    {
-                        "simulation_id": self.simulation_id,
-                        "simulation_seed": self.seed,
-                        "simulation_date_time": self.date_time,
-                        "simulation_num_games": self.num_games,
-                        "game_id": self.game_config.game_id,
-                        "game_name": self.game_config.name,
-                        "game_number": game_number,
-                        "game_seed": game_seed,
-                        "player_name": player.name,
-                        "player_class": player.__class__.__name__,
-                        "player_choose_card_strategy": player.choose_card_strategy.__class__.__name__,
-                        "player_choose_row_strategy": player.choose_row_strategy.__class__.__name__,
-                        "is_winner": player.name == winner.name,
-                        "total_points": player.total_points,
-                        "round_1_points": player.round_points[0],
-                        "round_2_points": player.round_points[1],
-                        "round_3_points": player.round_points[2],
-                        "round_4_points": player.round_points[3],
-                    }
-                    for player in game.players
-                ]
-            )
-
+            game_results = self.play_game(game_number, game_seed, logger_file, players)
             self.results = pd.concat([self.results, game_results], ignore_index=True)
 
         self.is_winner_results = self.compute_winner_results()
         print(self.is_winner_results)
         self.save_results()
         self.plot_results()
+        self.save_players_state(players)
+        self.logger.info(f"Finished simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
+
+    def save_players_state(self, players: List[BasePlayer]) -> None:
         for player in players:
             if isinstance(player, RLQValuePlayerLearner):
                 output_file = save_Q_to_file(player.get_Q(), self.output_path, player.name)
                 self.logger.info(f"Saved Q-table for player {player.name} to {output_file}")
-        self.logger.info(f"Finished simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
+            elif isinstance(player, RLEvolutionStrategyPlayer):
+                player.save_policy(self.output_path)
+
+    def play_game(self, game_number: int, game_seed: int, logger_file: str, players: List[BasePlayer]) -> pd.DataFrame:
+        logging_mode = self.get_game_logging_mode(game_number)
+        game = GameController(players, seed=game_seed, logging_mode=logging_mode, logger_file=logger_file)
+        winner = game.play()
+        game_results = self.get_game_results(game, game_number, game_seed, winner)
+        return game_results
+
+    def get_game_results(self, game: GameController, game_number: int, game_seed: int,
+                         winner: BasePlayer) -> pd.DataFrame:
+        game_results = pd.DataFrame(
+            [
+                {
+                    "simulation_id": self.simulation_id,
+                    "simulation_seed": self.seed,
+                    "simulation_date_time": self.date_time,
+                    "simulation_num_games": self.num_games,
+                    "game_id": self.game_config.game_id,
+                    "game_name": self.game_config.name,
+                    "game_number": game_number,
+                    "game_seed": game_seed,
+                    "player_name": player.name,
+                    "player_class": player.__class__.__name__,
+                    "player_choose_card_strategy": player.choose_card_strategy.__class__.__name__,
+                    "player_choose_row_strategy": player.choose_row_strategy.__class__.__name__,
+                    "is_winner": player.name == winner.name,
+                    "total_points": player.total_points,
+                    "round_1_points": player.round_points[0],
+                    "round_2_points": player.round_points[1],
+                    "round_3_points": player.round_points[2],
+                    "round_4_points": player.round_points[3],
+                }
+                for player in game.players
+            ]
+        )
+        return game_results
+
+    def get_game_logging_mode(self, game_number: int) -> LoggingMode:
+        logging_mode = LoggingMode.TO_FILE_SILENT
+        if game_number == 0 or game_number % LOG_GAME_SAMPLER == 0:
+            self.logger.info(f"Running simulation {game_number} of {self.num_games}")
+            logging_mode = LoggingMode.TO_FILE_VERBOSE  # Only log a sample of games
+        return logging_mode
+
+    def get_players(self) -> List[BasePlayer]:
+        players = [
+            PlayerFactory.create_player(player_config, seed=self.seed)
+            for player_config
+            in self.game_config.players
+        ]
+        return players
+
+    def get_game_seeds(self) -> List[int]:
+        # Generate unique seeds so each game is different
+        return self.randomizer.integers(low=1, high=self.num_games * 100, size=self.num_games).tolist()
+
+    def get_logger_file(self) -> str:
+        return os.path.join(self.output_path, "game-sample.log")
 
     def compute_winner_results(self) -> pd.DataFrame:
         return self.results.groupby("player_name")["is_winner"].agg(

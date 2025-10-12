@@ -70,7 +70,7 @@ python main_simulation.py --seed 42
 Or you can specify the number of games to run for and the different game configs to try:
 
 ```bash
-python main_simulation.py --seed 42 --num-games 10 --config "1-random_2.json" "2-random_10.json"
+python main_simulation.py --seed 42 --num-games 10 --configs "1-random_2.json" "2-random_10.json"
 ```
 
 ### Simulation output
@@ -90,7 +90,7 @@ The output of a simulation is:
 See an example output [here](resources/example_simulation_results) after running:
 
 ```bash
-python main_simulation.py --seed 42 --num-games 100 --config "6-random_1-min_1-mid_1-max_1.json"
+python main_simulation.py --seed 42 --num-games 100 --configs "6-random_1-min_1-mid_1-max_1.json"
 ```
 
 ## Players

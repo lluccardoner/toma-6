@@ -1,9 +1,9 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import List, Optional
 
-from src.model.game_history import GameHistory
 from src.model.board import Board
 from src.model.card import Card
+from src.model.game_history import GameHistory
 from src.model.hand import Hand
 from src.model.strategy.choose_card.base_choose_card_strategy import BaseChooseCardStrategy
 from src.model.strategy.choose_row.base_choose_row_strategy import BaseChooseRowStrategy
@@ -60,3 +60,6 @@ class BasePlayer(ABC):
 
     def add_points(self, points: int):
         self.total_points += points
+
+    def copy(self) -> "BasePlayer":
+        raise NotImplementedError(f"Implement copy method in {self.__class__.__name__}")

@@ -1,0 +1,18 @@
+{
+  "game_id": "17",
+  "name": "2 min and 1 RL evolution strategy player",
+  "players": [
+    {
+      "name": "Min player 1",
+      "type": "min"
+    },
+    {
+      "name": "Min player 2",
+      "type": "min"
+    },
+    {
+      "name": "RL ES player 1 - learner",
+      "type": "rl_es_learner"
+    }
+  ]
+}

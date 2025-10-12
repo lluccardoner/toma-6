@@ -18,16 +18,22 @@ class PlayerType(StrEnum):
     MAX = auto()
     INPUT = auto()
     RL_LEARNER = auto()
-    RL_PLAYER = auto()
+    RL_PLAYER = auto()  # Use Q-learning strategy for training
+    RL_ES_LEARNER = auto()
+    RL_ES_PLAYER = auto()  # Use Evolution Strategy for training
 
 
 @dataclass
 class RLConfig:
-    q_path: str
+    q_path: Optional[str] = None
+    policy_nn_params_path: Optional[str] = None
 
     @staticmethod
     def from_dict(config_dict: Dict) -> "RLConfig":
-        return RLConfig(q_path=config_dict["q_path"])
+        return RLConfig(
+            q_path=config_dict.get("q_path"),
+            policy_nn_params_path=config_dict.get("policy_nn_params_path"),
+        )
 
 
 @dataclass
