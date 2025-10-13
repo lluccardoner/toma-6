@@ -27,6 +27,13 @@ SIMULATION_ARGS = [
             'default': None,
             'help': 'Random seed for reproducibility (optional).'
         }
+    },
+    {
+        'flags': ['--equal-games'],
+        'kwargs': {
+            'action': 'store_true',
+            'help': 'If set, all games will have the same seed, making them identical.'
+        }
     }
 ]
 

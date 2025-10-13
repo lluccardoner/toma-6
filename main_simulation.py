@@ -7,7 +7,7 @@ def main():
     args = parse_simulation_args()
     game_configs = [GameConfig.load(config) for config in args.configs]
     for game_config in game_configs:
-        simulation = Simulation(game_config, num_games=args.num_games, seed=args.seed)
+        simulation = Simulation(game_config, num_games=args.num_games, seed=args.seed, equal_games=args.equal_games)
         simulation.run()
 
 
