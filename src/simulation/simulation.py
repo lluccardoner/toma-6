@@ -23,7 +23,7 @@ RESULTS_FOLDER = "results/"
 
 
 class Simulation:
-    def __init__(self, game_config: GameConfig, num_games: int = 100, seed: Optional[int] = None):
+    def __init__(self, game_config: GameConfig, num_games: int = 100, seed: Optional[int] = None, equal_games: bool = False):
         self.logger = get_simulation_logger()
         self.seed = seed
         self.randomizer = np.random.default_rng(seed)
@@ -36,17 +36,19 @@ class Simulation:
 
         self.game_config = game_config
         self.num_games = num_games
+        self.equal_games = equal_games
         self.results = pd.DataFrame()
         self.is_winner_results = pd.DataFrame()
 
     def run(self):
         self.logger.info(f"Running simulation id={self.simulation_id} for game_id={self.game_config.game_id}")
         logger_file = self.get_logger_file()
-        seeds = self.get_game_seeds()
+        seeds = self.get_game_seeds(self.equal_games)
         players = self.get_players()  # Players are the same throughout the simulation
         for game_number, game_seed in enumerate(seeds):
             game_results = self.play_game(game_number, game_seed, logger_file, players)
             self.results = pd.concat([self.results, game_results], ignore_index=True)
+            # NOTE: random player rng is not reset between games so even with same game, results will differ
 
         self.is_winner_results = self.compute_winner_results()
         print(self.is_winner_results)
@@ -114,7 +116,9 @@ class Simulation:
         ]
         return players
 
-    def get_game_seeds(self) -> List[int]:
+    def get_game_seeds(self, equal: bool=False) -> List[int]:
+        if equal:
+            return [self.seed] * self.num_games  # All games have the same seed
         # Generate unique seeds so each game is different
         return self.randomizer.integers(low=1, high=self.num_games * 100, size=self.num_games).tolist()
 
